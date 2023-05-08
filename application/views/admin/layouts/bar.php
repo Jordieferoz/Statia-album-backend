@@ -13,7 +13,6 @@
             </ul>
 
             <ul class="navbar-nav flex-column">
-
                 <li class="nav-item <?php echo ($this->uri->segment(2) == 'categorization') ? 'active' : ''; ?>">
                     <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#tables_drp">
                         <span class="feather-icon"><i data-feather="list"></i></span>
@@ -27,6 +26,33 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo site_url('admin/categorization/inactiveCategory'); ?>">Inactive Category</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav flex-column">
+                <li class="nav-item <?php echo ($this->uri->segment(2) == 'photos') ? 'active' : ''; ?>">
+                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#photosUI">
+                        <span class="feather-icon"><i data-feather="image"></i></span>
+                        <span class="nav-link-text">Photos</span>
+                    </a>
+                    <ul id="photosUI" class="nav flex-column collapse collapse-level-1">
+                        <li class="nav-item">
+                            <ul class="nav flex-column">
+                                <li class="nav-item"> 
+                                    <a class="nav-link" href="<?php echo site_url('admin/photos/new'); ?>">Add Photos</a>
+                                </li>
+                                <li class="nav-item"> 
+                                    <a class="nav-link" href="<?php echo site_url('admin/photos/bulkadd'); ?>">Bulk Add Photos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo site_url('admin/photos/published'); ?>">Published Photos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo site_url('admin/photos/unpublished'); ?>">Unpublished Photos</a>
                                 </li>
                             </ul>
                         </li>
@@ -101,6 +127,17 @@
         if ($this->session->flashdata('danger')) {
             echo '<div class="alert alert-inv alert-inv-danger alert-wth-icon alert-dismissible fade show" role="alert">
                                 <span class="alert-icon-wrap"><i class="zmdi zmdi-bug"></i></span> ' . $this->session->flashdata('danger') . '
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>';
+        }
+        ?>
+
+    <?php
+        if ($this->session->flashdata('error')) {
+            echo '<div class="alert alert-inv alert-inv-danger alert-wth-icon alert-dismissible fade show" role="alert">
+                                <span class="alert-icon-wrap"><i class="zmdi zmdi-bug"></i></span> ' . $this->session->flashdata('error') . '
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
