@@ -32,7 +32,7 @@
                   View
                 </button>
             </td>
-            <td><button type="button" class="btn btn-default imageShow" data-image = "<?php echo $imagePath; ?>" data-toggle="modal" data-target="#view-image"><img src = "<?php echo $imagePath; ?>" alt = "Cover image" height = "50" width = "50"></button></td>
+            <td><button type="button" class="btn btn-default imageShow" data-image = "<?php echo $imagePath; ?>" data-toggle="modal" data-target="#view-image">Load Video</button></td>
             <td><?php echo $videos->added_date . ' / ' . $videos->added_time; ?></td>
             <td class="project-actions text-right">
               <a class="btn btn-info btn-sm" href="<?php echo site_url('admin/videos/edit/'.$videos->id); ?>">
@@ -68,7 +68,7 @@
   </div>
 
   <div class="modal fade" id="view-image">
-    <div class="modal-dialog modal-xs">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">Video</h4>
@@ -77,7 +77,12 @@
           </button>
         </div>
         <div class="modal-body">
-          <a href="" id = "modalImageLink" target = "_BLANK"><img src="" id = "modalImage" alt="Cover Video" height = "90%" width = "90%"></a>
+          <a href="" id = "modalImageLink" target = "_BLANK">
+            <video width="750" controls>
+              <source src="mov_bbb.mp4" id = "modalImage" type="video/mp4">
+              Your browser does not support HTML video.
+            </video>
+          </a>
         </div>
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

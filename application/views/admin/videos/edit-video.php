@@ -37,7 +37,6 @@ foreach ($POST_DETAILS as $post) {
     <label for="inputClientCompany">Video (mp4|wmv|mpeg|mov|mpg)</label>
     <input type="file" name="coverVideo" accept = "videos/*" class = "form-control" id="coverVideo">
     <span style = "color: red;" class = "text-error"><?php echo isset($error['error']) ? $error['error'] : ''; ?></span>
-    <br /><img src="<?php echo base_url() . 'uploads/videos/' . $videoPath; ?>" id = "showImage" alt="Cover Video" height = "100" width = "150">
   </div>
 </div>
 
