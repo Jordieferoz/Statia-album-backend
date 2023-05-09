@@ -38,7 +38,7 @@
               <a class="btn btn-info btn-sm" href="<?php echo site_url('admin/photos/edit/'.$photos->id); ?>">
                   Edit
               </a>
-              <a class="btn btn-success btn-sm" href="<?php echo site_url('admin/blog/publish/'.$photos->id); ?>">
+              <a class="btn btn-success btn-sm" href="<?php echo site_url('admin/photos/publish/'.$photos->id); ?>">
                   Publish
               </a>
           </td>

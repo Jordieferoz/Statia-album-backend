@@ -14,10 +14,7 @@ class Custom404 extends CI_Controller {
   public function index(){
  
     $this->output->set_status_header('404'); 
-    $this->load->view('site/layouts/header');
-    $this->load->view('site/layouts/menu');
     $this->load->view('site/404');
-    $this->load->view('site/layouts/footer');
  
   }
 

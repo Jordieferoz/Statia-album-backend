@@ -1,0 +1,82 @@
+
+.heading1 {
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 45px;
+    font-weight: 600;
+    line-height: 45px;
+    color: var(--primary-black);
+  }
+  
+  .heading2 {
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 27px;
+    color: var(--white);
+  }
+  
+  .heading3 {
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 22px;
+    color: var(--primary-black);
+  }
+  
+  .heading4 {
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    color: var(--primary-black);
+  }
+  
+  .heading5 {
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 18px;
+    color: var(--primary-black);
+  }
+  
+  .heading6 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    color: var(--primary-black);
+  }
+  
+  .sub-heading {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 27px;
+    color: var(--white);
+  }
+  
+  .paragraph {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 27px;
+    color: var(--grey-base);
+  }
+  
+  .paragraph2 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 40px;
+    color: var(--grey-base);
+  }
+  
+  .supported-text {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 27px;
+    color: var(--white);
+  }
+
+
