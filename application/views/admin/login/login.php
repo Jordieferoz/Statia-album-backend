@@ -31,10 +31,6 @@
                             </div>
                             <span class = "text-error"><?php echo form_error('password'); ?></span>
                             </div>
-                            <div class="custom-control custom-checkbox mb-25">
-                                <input class="custom-control-input" id="same-address" type="checkbox" checked>
-                                <label class="custom-control-label font-14" for="same-address">Keep me logged in</label>
-                            </div>
                             <button class="btn btn-primary btn-block" name = "login" type="submit">Start session</button>
                             <!-- <p class="font-14 text-center mt-15">Having trouble logging in?</p> -->
                             <!-- <div class="option-sep">or</div>
