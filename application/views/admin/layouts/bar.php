@@ -61,6 +61,30 @@
             </ul>
 
             <ul class="navbar-nav flex-column">
+                <li class="nav-item <?php echo ($this->uri->segment(2) == 'videos') ? 'active' : ''; ?>">
+                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#videosUI">
+                        <span class="feather-icon"><i data-feather="video"></i></span>
+                        <span class="nav-link-text">Videos</span>
+                    </a>
+                    <ul id="videosUI" class="nav flex-column collapse collapse-level-1">
+                        <li class="nav-item">
+                            <ul class="nav flex-column">
+                                <li class="nav-item"> 
+                                    <a class="nav-link" href="<?php echo site_url('admin/videos/new'); ?>">Add Videos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo site_url('admin/videos/published'); ?>">Published Videos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?php echo site_url('admin/videos/unpublished'); ?>">Unpublished Videos</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav flex-column">
                 <li class="nav-item <?php echo ($this->uri->segment(2) == 'settings') ? 'active' : ''; ?>">
                     <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#settingsUl">
                         <span class="feather-icon"><i data-feather="settings"></i></span>

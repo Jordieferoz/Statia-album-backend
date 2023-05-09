@@ -21,9 +21,9 @@ class Photos_model extends CI_Model {
 
     }
 
-    public function publishedPosts() {
-
+    public function publishedPosts($isImage = true) {
         $this->db->where('status', 1);
+        $this->db->where('is_image', $isImage ? 1 : 0);
 
         $data = $this->db->get('photos');
 
@@ -31,23 +31,14 @@ class Photos_model extends CI_Model {
 
     }
 
-    public function unpublishedPosts() {
+    public function unpublishedPosts($isImage = true) {
 
         $this->db->where('status', 0);
+        $this->db->where('is_image', $isImage ? 1 : 0);
 
         $this->db->where('user_id', $this->session->userdata('id'));
 
         $data = $this->db->get('photos');
-
-        return $data->result();
-
-    }
-
-    public function getCoverDetails($id) {
-
-        $this->db->where('post_id', $id);
-
-        $data = $this->db->get('covers');
 
         return $data->result();
 
@@ -125,16 +116,6 @@ class Photos_model extends CI_Model {
         $this->db->where('id', $id);
 
         $query = $this->db->update('photos', $data);
-
-        return $query;
-
-    }
-
-    public function updateCover($id, $data) {
-
-        $this->db->where('post_id', $id);
-
-        $query = $this->db->update('covers', $data);
 
         return $query;
 

@@ -8,7 +8,7 @@
     </div>
     <div class="form-group">
       <label for="inputDescription">Description</label>
-      <textarea class="tinymce" id="inputDescription" name="description" placeholder="Write your blog description here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php echo set_value('description'); ?></textarea>
+      <textarea class="tinymce" id="inputDescription" name="description" placeholder="Write your description here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"><?php echo set_value('description'); ?></textarea>
       <span style="color: red;" class="text-error"><?php echo form_error('description'); ?></span>
     </div>
     <div class="form-group">
@@ -22,7 +22,7 @@
       <span style="color: red;" class="text-error"><?php echo form_error('category'); ?></span>
     </div>
     <div class="form-group">
-      <label for="inputClientCompany">Image</label>
+      <label for="inputClientCompany">Image (gif|jpg|png|jpeg)</label>
       <input type="file" name="coverImage" accept="images/*" class="form-control" id="coverImage" required>
       <span style="color: red;" class="text-error"><?php echo isset($error['error']) ? $error['error'] : ''; ?></span>
     </div>
