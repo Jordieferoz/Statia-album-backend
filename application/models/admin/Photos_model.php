@@ -62,6 +62,25 @@ class Photos_model extends CI_Model {
 
         }
 
+    }
+
+    public function getSingleRecord($id) {
+
+        $this->db->where('user_id', $this->session->userdata('id'));
+
+        $this->db->where('id', $id);
+
+        $data = $this->db->get('photos');
+
+        if ($data -> num_rows() > 0) {
+
+            return $data->result();
+
+        } else {
+
+            return false;
+
+        }
 
     }
 

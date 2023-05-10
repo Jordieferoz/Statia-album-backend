@@ -34,6 +34,11 @@ foreach ($POST_DETAILS as $post) {
     <span style = "color: red;" class = "text-error"><?php echo form_error('category'); ?></span>
   </div>
   <div class="form-group">
+    <label for="inputClientCompany">Thumbnail (gif|jpg|png|jpeg)</label>
+    <input type="file" name="thumbnailImage" accept="images/*" class="form-control" id="thumbnailImage">
+    <span style="color: red;" class="text-error"><?php echo isset($error['error']) ? $error['error'] : ''; ?></span>
+  </div>
+  <div class="form-group">
     <label for="inputClientCompany">Video (mp4|wmv|mpeg|mov|mpg)</label>
     <input type="file" name="coverVideo" accept = "videos/*" class = "form-control" id="coverVideo">
     <span style = "color: red;" class = "text-error"><?php echo isset($error['error']) ? $error['error'] : ''; ?></span>
