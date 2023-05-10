@@ -28,7 +28,7 @@ foreach ($POST_DETAILS as $post) {
     <select class="form-control custom-select" name = "category" required>
       <option disabled>Select category</option>
       <?php foreach ($CATEGORIES as $categoryAll) { ?>
-          <option value="<?php echo $categoryAll->id; ?>" <?php echo ($category == $categoryAll->category) ? 'selected' : ''; ?>><?php echo $categoryAll->category; ?></option>
+          <option value="<?php echo $categoryAll->id; ?>" <?php echo ($category == $categoryAll->id) ? 'selected' : ''; ?>><?php echo $categoryAll->category; ?></option>
       <?php } ?>
     </select>
     <span style = "color: red;" class = "text-error"><?php echo form_error('category'); ?></span>

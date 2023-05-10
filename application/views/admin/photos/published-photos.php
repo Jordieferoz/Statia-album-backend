@@ -25,7 +25,7 @@
       ?>
           <tr>
             <td><?php echo ++$i; ?></td>
-            <td><?php echo $photos->category_id; ?></td>
+            <td><?php echo $photos->category; ?></td>
             <td><?php echo $photos->title; ?></td>
             <td>
                 <button type="button" class="btn btn-info description" data-description = "<?php echo $description; ?>" data-toggle="modal" data-target="#view-description">

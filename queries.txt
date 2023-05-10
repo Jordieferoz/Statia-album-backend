@@ -1,0 +1,1 @@
+ALTER TABLE `photos` ADD `thumbnail_path` VARCHAR(200) NULL AFTER `file_name`;

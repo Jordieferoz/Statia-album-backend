@@ -22,24 +22,24 @@ class Photos_model extends CI_Model {
     }
 
     public function publishedPosts($isImage = true) {
-        $this->db->where('status', 1);
-        $this->db->where('is_image', $isImage ? 1 : 0);
-
-        $data = $this->db->get('photos');
-
+        $data = $this->db->from('photos')
+            ->select('photos.*, categories.category')
+            ->where('status', 1)
+            ->where('is_image', $isImage ? 1 : 0)
+            ->join('categories', 'photos.category_id = categories.id')
+            ->get();
         return $data->result();
 
     }
 
     public function unpublishedPosts($isImage = true) {
 
-        $this->db->where('status', 0);
-        $this->db->where('is_image', $isImage ? 1 : 0);
-
-        $this->db->where('user_id', $this->session->userdata('id'));
-
-        $data = $this->db->get('photos');
-
+        $data = $this->db->from('photos')
+            ->select('photos.*, categories.category')
+            ->where('status', 0)
+            ->where('is_image', $isImage ? 1 : 0)
+            ->join('categories', 'photos.category_id = categories.id')
+            ->get();
         return $data->result();
 
     }
@@ -62,6 +62,25 @@ class Photos_model extends CI_Model {
 
         }
 
+    }
+
+    public function getSingleRecord($id) {
+
+        $this->db->where('user_id', $this->session->userdata('id'));
+
+        $this->db->where('id', $id);
+
+        $data = $this->db->get('photos');
+
+        if ($data -> num_rows() > 0) {
+
+            return $data->result();
+
+        } else {
+
+            return false;
+
+        }
 
     }
 

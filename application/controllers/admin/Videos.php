@@ -151,6 +151,26 @@ class Videos extends CI_Controller {
 			
 				$image_metadata = $this->upload->data();
 
+				$config['upload_path'] = FCPATH.'uploads/thumbnails/';
+
+				$config['allowed_types'] = 'gif|jpg|png|jpeg';
+
+				$config['max_size'] = 2000;
+
+				$config['encrypt_name'] = TRUE;
+
+				$this->upload->initialize($config);
+
+				$thumbnail_metadata = [];
+
+				if (!$this->upload->do_upload('thumbnailImage')) {
+
+					$this->session->set_flashdata('error', "Thumbnail: " . $this->upload->display_errors());
+
+				} else {
+					$thumbnail_metadata = $this->upload->data();
+				}
+
 				$postData = [
 
 					'title' => $this->input->post('title'),
@@ -166,6 +186,8 @@ class Videos extends CI_Controller {
 					'remote_address' => $_SERVER['REMOTE_ADDR'],
 
 					'file_name' => $image_metadata['file_name'],
+
+					'thumbnail_path' => isset($thumbnail_metadata['file_name']) ? $thumbnail_metadata['file_name'] : null,
 
 					'file_type' => $image_metadata['file_type'],
 
@@ -312,6 +334,35 @@ class Videos extends CI_Controller {
 
 		if ($this->form_validation->run()) {
 
+			$videoData = $this->Photos_model->getSingleRecord($id);
+
+			echo json_encode($videoData);
+
+			$thumbnail_metadata = ['file_name' => $videoData->thumbnail_path];
+
+			if (isset($_FILES['thumbnailImage']) && is_uploaded_file($_FILES['thumbnailImage']['tmp_name'])) {
+
+				$config['upload_path'] = FCPATH.'uploads/thumbnails/';
+
+				$config['allowed_types'] = 'gif|jpg|png|jpeg';
+
+				$config['max_size'] = 2000;
+
+				$config['encrypt_name'] = TRUE;
+
+				$this->upload->initialize($config);
+
+
+				if (!$this->upload->do_upload('thumbnailImage')) {
+
+					$this->session->set_flashdata('error', "Thumbnail: " . $this->upload->display_errors());
+
+				} else {
+					$thumbnail_metadata = $this->upload->data();
+				}
+
+			}
+
 			if (isset($_FILES['coverVideo']) && is_uploaded_file($_FILES['coverVideo']['tmp_name'])) {
 
 				$config['upload_path'] = FCPATH.'uploads/videos/';
@@ -347,6 +398,8 @@ class Videos extends CI_Controller {
 						'last_update_remote' => $_SERVER['REMOTE_ADDR'],
 
 						'file_name' => $image_metadata['file_name'],
+
+						'thumbnail_path' => $thumbnail_metadata['file_name'],
 
 						'file_type' => $image_metadata['file_type'],
 
@@ -387,6 +440,8 @@ class Videos extends CI_Controller {
 					'user_id' => $this->session->userdata('id'),
 
 					'description' => $this->input->post('description'),
+
+					'thumbnail_path' => $thumbnail_metadata['file_name'],
 
 					'category_id' => $this->input->post('category'),
 
