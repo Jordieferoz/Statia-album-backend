@@ -33,7 +33,7 @@
                         <?= $count % 3 === 0 ? '<div class="grid ' . $evenodd . '-row">' : '' ?>
                         <div class="grid-item">
                             <div class="mediaCard">
-                                <img src="<?= base_url('uploads/photos/' . $photo->file_name) ?>" />
+                                <img src="<?= $photo->is_image == 1 ? base_url('uploads/photos/' . $photo->file_name) : ($photo->thumbnail_path ? base_url('uploads/thumbnails/' . $photo->thumbnail_path) : base_url('assets/site/images/no-image-placeholder.png')) ?>" />
                                 <div class="media-content">
                                     <h4 class="heading2"><?= $photo->title ? $photo->title : 'No title' ?></h4>
                                     <h5 class="sub-heading" title="<?= $photo->orig_name ?>"><?= strlen($photo->orig_name) > 20 ? mb_substr($photo->orig_name, 0, 20) . '...' : $photo->orig_name; ?></h5>

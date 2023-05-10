@@ -151,7 +151,7 @@ class Videos extends CI_Controller {
 			
 				$image_metadata = $this->upload->data();
 
-				$config['upload_path'] = FCPATH.'uploads/thumnbnails/';
+				$config['upload_path'] = FCPATH.'uploads/thumbnails/';
 
 				$config['allowed_types'] = 'gif|jpg|png|jpeg';
 
@@ -342,7 +342,7 @@ class Videos extends CI_Controller {
 
 			if (isset($_FILES['thumbnailImage']) && is_uploaded_file($_FILES['thumbnailImage']['tmp_name'])) {
 
-				$config['upload_path'] = FCPATH.'uploads/thumnbnails/';
+				$config['upload_path'] = FCPATH.'uploads/thumbnails/';
 
 				$config['allowed_types'] = 'gif|jpg|png|jpeg';
 
