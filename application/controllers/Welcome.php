@@ -14,6 +14,16 @@ class Welcome extends CI_Controller
 			$this->session->set_flashdata('warning', "Please login to continue.");
 
 			redirect('/account/login');
+		} else if ($this->session->userdata('expiry_timestamp') < time()) {
+			$data = $this->session->all_userdata();
+
+			foreach ($data as $key => $value) {
+
+				$this->session->unset_userdata($key);
+			}
+			$this->session->set_flashdata('info', "Your session has expired, please login again.");
+
+			redirect('/account/login');
 		}
 
 		$this->load->library('form_validation');
@@ -131,6 +141,5 @@ class Welcome extends CI_Controller
 		}
 
 		redirect('account/login');
-
 	}
 }

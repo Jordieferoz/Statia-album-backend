@@ -26,7 +26,7 @@
         <div class="menu-wrapper">
           <ul class="main-menu">
             <li>
-              <a class="heading5 active" href="#">
+              <a class="heading5 active" href="<?= base_url('/') ?>">
                 Photos
               </a>
             </li>

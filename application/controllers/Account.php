@@ -107,6 +107,7 @@ class Account extends CI_Controller
 							$this->session->set_userdata('user_id', $id);
 
 							$this->session->set_userdata('user_email', $email);
+							$this->session->set_userdata('expiry_timestamp', time() + EXPIRATION_DELAY);
 
 							redirect('/');
 						} else {
@@ -287,6 +288,7 @@ class Account extends CI_Controller
 					$this->session->set_userdata('user_email', $reader[0]->email);
 
 					$this->session->set_userdata('user_id', $id);
+					$this->session->set_userdata('expiry_timestamp', time() + EXPIRATION_DELAY);
 
 					redirect('/');
 				} else {
@@ -408,8 +410,7 @@ class Account extends CI_Controller
 			];
 
 			$vars = array(
-				'var2' => $thisOTP,
-				'var1' => $userDetails[0]->name
+				'var1' => $thisOTP,
 			);
 
 			sendsms($this->input->post('email'), $vars);

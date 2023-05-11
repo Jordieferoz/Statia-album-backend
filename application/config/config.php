@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 define('PROJECT_NAME', 'Statia Pictures');
+define('EXPIRATION_DELAY', 30);
 
 
 /* If products <200 //// 2000 
