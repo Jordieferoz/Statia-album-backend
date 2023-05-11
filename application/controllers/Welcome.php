@@ -9,6 +9,13 @@ class Welcome extends CI_Controller
 
 		parent::__construct();
 
+		if (!$this->session->userdata('user_key')) {
+
+			$this->session->set_flashdata('warning', "Please login to continue.");
+
+			redirect('/account/login');
+		}
+
 		$this->load->library('form_validation');
 	}
 
