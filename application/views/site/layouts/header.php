@@ -35,6 +35,13 @@
                 Albums
               </a>
             </li>
+            <?php if ($this->session->userdata('user_key')) { ?>
+            <li>
+              <a class="heading5" href="<?= base_url('welcome/logout') ?>">
+                Logout
+              </a>
+            </li>
+            <?php } ?>
             <li>
               <a id="open-sidebar">
                 <img src="<?= base_url() ?>assets/site/images/hamburger_icon.svg" />

@@ -119,4 +119,18 @@ class Welcome extends CI_Controller
 		$this->load->helper('download');
 		force_download($fileName, $backup);
 	}
+
+	public function logout()
+	{
+
+		$data = $this->session->all_userdata();
+
+		foreach ($data as $key => $value) {
+
+			$this->session->unset_userdata($key);
+		}
+
+		redirect('account/login');
+
+	}
 }

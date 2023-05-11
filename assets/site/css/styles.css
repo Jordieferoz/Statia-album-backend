@@ -428,3 +428,18 @@ body.sidebar-menu-open .sidebar-menu {
   color: var(--orange);
   background-color: var(--grey-1);
 }
+
+.forgot-password {
+  padding-top: 14px;
+  display: inline-block;
+  color: var(--orange) !important;
+}
+
+.btn-primary {
+  background-color: var(--orange) !important;
+  border: none !important;
+}
+
+.primary-link {
+  color: var(--orange);
+}
