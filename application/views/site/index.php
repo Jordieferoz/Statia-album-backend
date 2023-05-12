@@ -24,11 +24,10 @@
       echo '<center>No photos to show</center>';
     }
     $count = 0;
-    $evenodd = 'even';
     foreach ($PHOTOS as $photo) {
     ?>
-      <?= $count % 3 === 0 ? '<div class="grid ' . $evenodd . '-row">' : '' ?>
-      <div class="grid-item" onclick="viewPage(<?= $photo->id ?>)">
+      <?= $count % 3 === 0 ? '<div class="row">' : '' ?>
+      <div class="col-md-4 sol-sm-6 col-xs-12 mt-3" onclick="viewPage(<?= $photo->id ?>)">
         <div class="mediaCard">
           <img src="<?= $photo->is_image == 1 ? base_url('uploads/photos/' . $photo->file_name) : ($photo->thumbnail_path ? base_url('uploads/thumbnails/' . $photo->thumbnail_path) : base_url('assets/site/images/no-image-placeholder.png')) ?>" />
           <div class="media-content">
@@ -42,7 +41,6 @@
     <?php
       if ($count % 3 == 2) {
         echo '</div>';
-        $evenodd = $evenodd == 'even' ? 'odd' : 'even';
       }
       $count++;
     } ?>
@@ -86,20 +84,4 @@
       removeClass(ele, "sidebar-menu-open");
     }
   }
-  document.addEventListener('readystatechange', function() {
-    if (document.readyState === "complete") {
-      init();
-    }
-  });
-  var elem = document.querySelector('.grid');
-  var masonry = new Masonry(elem, {
-    itemSelector: '.grid-item',
-    columnWidth: 200,
-  });
-  var masonry = new Masonry('.grid.odd-row', {
-    cols: 2
-  });
-  var masonry = new Masonry('.grid.even-row', {
-    cols: 3
-  });
 </script>
