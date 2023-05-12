@@ -43,6 +43,26 @@ class Welcome extends CI_Controller
 		$this->load->view('site/layouts/footer');
 	}
 
+	public function photo() {
+		$id = $_GET['id'];
+		$pageWasRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0';
+		$photoRecord = $this->Crud->Read('photos', " `id` = '$id'");
+		if (count($photoRecord) == 1) {
+			if ($pageWasRefreshed === false) {
+				$this->Crud->Update('photos', [
+					'total_views' => $photoRecord[0]->total_views + 1
+				], " `id` = '$id'");
+			}
+			$photoData = $this->Crud->Read('photos', " `id` = '$id'");
+			$data['PHOTO'] = $photoData[0];
+			$this->load->view('site/layouts/header');
+			$this->load->view('site/photo', $data);
+			$this->load->view('site/layouts/footer');
+		} else {
+			redirect('/');
+		}
+	}
+
 	public function getOS()
 	{
 

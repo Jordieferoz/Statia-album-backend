@@ -443,3 +443,22 @@ body.sidebar-menu-open .sidebar-menu {
 .primary-link {
   color: var(--orange);
 }
+
+.grey-bg {
+  background-color: var(--grey-1);
+  padding: 3em 5em;
+}
+
+.photo-view-table {
+  width: 100%;
+}
+
+.photo-view-table td {
+  color: var(--orange);
+  text-align: left !important;
+}
+
+.photo-view-table th {
+  font-weight: 800;
+  text-align: left !important;
+}
