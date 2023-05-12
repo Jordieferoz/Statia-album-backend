@@ -2,8 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 define('PROJECT_NAME', 'Statia Pictures');
-define('EXPIRATION_DELAY', 30);
+define('EXPIRATION_DELAY', 30000);
 
+define('APP_URL', ($_SERVER['SERVER_PORT'] == 443 ? 'https' : 'http') . "://{$_SERVER['SERVER_NAME']}".str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME'])); 
 
 /* If products <200 //// 2000 
 
@@ -30,7 +31,7 @@ define('EXPIRATION_DELAY', 30);
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/statia-admin-ui/';
+$config['base_url'] = APP_URL;//'http://localhost/statia-admin-ui/';
 
 /*
 |--------------------------------------------------------------------------
