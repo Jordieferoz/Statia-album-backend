@@ -140,6 +140,7 @@
 <!-- Main Content -->
 <div class="hk-pg-wrapper">
     <!-- Breadcrumb -->
+    <?php if($this->uri->segment(2) != 'dashboard') { ?>
     <nav class="hk-breadcrumb" aria-label="breadcrumb">
         <ol class="breadcrumb breadcrumb-light bg-transparent">
             <li class="breadcrumb-item"><a href="<?php echo site_url('admin/dashboard'); ?>">Home</a></li>
@@ -151,6 +152,7 @@
             <?php } ?>
         </ol>
     </nav>
+    <?php } ?>
     <!-- /Breadcrumb -->
 
     <!-- Container -->

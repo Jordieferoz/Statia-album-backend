@@ -3,8 +3,10 @@
             <div class="hk-footer-wrap container px-15">
                 <footer class="footer">
                     <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <p>Pampered by<a href="https://statia-pictures.com/" class="text-dark" target="_blank">Statia Pictures</a> © 2023</p>
+                        <div class="col-md-12 col-sm-12">
+                            <center>
+                                <p style="color: white;">Powered by Statia-tourism | All Rights Reserved.</p>
+                            </center>
                         </div>
                     </div>
                 </footer>

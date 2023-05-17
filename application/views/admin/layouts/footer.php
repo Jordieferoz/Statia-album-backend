@@ -5,8 +5,8 @@
             <div class="hk-footer-wrap container">
                 <footer class="footer">
                     <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <p>Pampered by <a href="<?php echo base_url(); ?>" class="text-dark" target="_blank"><?php echo PROJECT_NAME; ?></a> © <?php echo date('Y'); ?></p>
+                        <div class="col-md-12 col-sm-12 d-flex justify-content-end">
+                            <p>Powered by Statia-tourism | All Rights Reserved.</p>
                         </div>
                     </div>
                 </footer>
