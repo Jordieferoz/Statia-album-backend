@@ -6,9 +6,9 @@
 	<!-- /Preloader -->
 
         <!-- Top Navbar -->
-        <nav class="navbar navbar-expand-xl navbar-dark fixed-top hk-navbar">
-            <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><span class="feather-icon"><i data-feather="menu"></i></span></a>
-            <a class="navbar-brand font-weight-700" href="<?php echo site_url('admin/dashboard'); ?>">
+        <nav class="navbar navbar-expand-xl navbar-dark fixed-top hk-navbar" style="background-color: #ECECEC;">
+            <a id="navbar_toggle_btn" class="navbar-toggle-btn nav-link-hover" href="javascript:void(0);"><span class="feather-icon" style="color: #F6B000;"><i data-feather="menu"></i></span></a>
+            <a class="navbar-brand font-weight-700" style="font-size: 16pt; color: black;" href="<?php echo site_url('admin/dashboard'); ?>">
                 <?php echo PROJECT_NAME; ?>
             </a>
             <ul class="navbar-nav hk-navbar-content">
@@ -17,13 +17,13 @@
                         <div class="media">
                             <div class="media-img-wrap">
                                 <div class="avatar mr-10">
-                                    <span class="avatar-text avatar-group-sm avatar-text-danger rounded-circle"><span class="initial-wrap"><span><?php echo mb_substr(PROJECT_NAME, 0, 1); ?></span></span>
+                                    <span class="avatar-text avatar-group-sm avatar-text-danger rounded-circle"><span class="initial-wrap"><span>A</span></span>
                                     </span>
                                 </div>
                                 <!-- <span class="badge badge-success badge-indicator"></span> -->
                             </div>
-                            <div class="media-body">
-                                <span><?php echo PROJECT_NAME; ?><i class="zmdi zmdi-chevron-down"></i></span>
+                            <div class="media-body" style="color: black;">
+                                <span>Admin<i style="color: black;" class="zmdi zmdi-chevron-down"></i></span>
                             </div>
                         </div>
                     </a>

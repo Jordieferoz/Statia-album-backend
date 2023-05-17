@@ -76,9 +76,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => $_SERVER['SERVER_NAME'] == 'localhost' ? 'root' : '',
+	'username' => $_SERVER['SERVER_NAME'] == 'localhost' ? 'root' : 'root',
 	'password' => $_SERVER['SERVER_NAME'] == 'localhost' ? '' : '',
-	'database' => $_SERVER['SERVER_NAME'] == 'localhost' ? 'statia_pictures' : '',
+	'database' => $_SERVER['SERVER_NAME'] == 'localhost' ? 'statia_pictures' : 'statia_pictures',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
