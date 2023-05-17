@@ -550,3 +550,117 @@ body.sidebar-menu-open .sidebar-menu {
   display:none;
   transition: display 0s linear;
 }
+
+/* fancybox=== */
+
+.clear:after, .clear:before {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.gallery a {
+    display: block;
+    text-decoration: none;
+    width: 100%;
+    overflow: hidden;
+    outline: none;
+}
+
+.gallery a img {
+    height: 100%;
+    transform: scale(1,1);
+    transition: all 300ms ease;
+}
+
+.gallery a img:hover {
+    transform: scale(1.1,1.1);
+}
+
+
+.bg {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    transform: scale(1,1);
+    transition: all 300ms ease;
+}
+.bg .media-content {
+  position: absolute;
+    left: 0px;
+    bottom: 1px;
+    text-align: left;
+    z-index: 99;
+    background: linear-gradient(180deg, rgba(217, 217, 217, 0) 0.48%, #121212 100%);
+    width: 100%;
+    padding-left: 20px;
+}
+.bg .img_header {
+    height: 48px;
+    background: linear-gradient(0deg, rgba(217, 217, 217, 0) -2.52%, #121212 100%);    
+}
+.bg .play_button {
+    position: absolute;
+    right: 0px;
+    top: 3px;
+    text-align: left;
+    z-index: 99;
+    width: 10%;
+    height: 26px;
+    padding: 1px;
+}
+.bg .media-content .media-views {
+  position: relative;
+  padding-left: 46px;
+}
+.bg .media-content .media-views::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 40px;
+  height: 1px;
+  background: var(--white);
+}
+.bg .media-card-overlay {
+  position: absolute;
+  height: 300px;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(217, 217, 217, 0) 24.48%, #121212 100%);
+  left: 0;
+  bottom: 0;
+  z-index: 0;
+}
+/* .bg:hover {
+    transform: scale(1.1,1.1);
+} */
+
+@media(max-width: 991px) {
+
+	.gallery a {
+		width: 50%;
+	}
+
+}
+
+@media(max-width: 767px) {
+
+	.gallery a {
+		width: 100%;
+	}
+
+	.bg {
+		height: 300px;
+	}
+
+}
+.fancybox-button--share, .fancybox-button--play{
+  display:none !important;
+}

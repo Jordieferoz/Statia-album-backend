@@ -157,9 +157,9 @@ class Account extends CI_Controller
 	{
 
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
-		$this->form_validation->set_rules('phone', 'Phone', 'required|trim|is_unique[users.phone]');
+		$this->form_validation->set_rules('phone', 'Phone', 'required|trim');
 		$this->form_validation->set_rules('password', 'Password', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'trim|required');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|is_unique[users.email]');
 
 		if ($this->form_validation->run()) {
 
@@ -198,9 +198,11 @@ class Account extends CI_Controller
 
 				sendsms($this->input->post('phone'), $vars);
 
-				$this->session->set_flashdata('success', 'Registration success! Please check register mail for OTP.');
+				$this->session->set_flashdata('success', 'Registration success!.'); // Please check register mail for OTP
 
-				redirect('account/verification/' . $verificationKey);
+				// redirect('account/verification/' . $verificationKey);
+				echo "<script>alert('Registration successful, please login with your credentials to access the images.'); window.location.assign('" . base_url('account/login/') . "')</script>";
+				// redirect('account/login/');
 			}
 		} else {
 
@@ -419,7 +421,7 @@ class Account extends CI_Controller
 
 			$this->session->set_flashdata('success', "OTP sent to registered email.");
 
-			redirect('account/recover/?email=' . $email);
+			// redirect('account/recover/?email=' . $email);
 		} else {
 
 			$this->session->set_flashdata('danger', "Email not registered! <a href = '" . site_url('account/register/') . "'>Register now</a>");
@@ -431,7 +433,7 @@ class Account extends CI_Controller
 	public function tryrecover()
 	{
 
-		$email =$this->input->post('email');
+		$email = $this->input->post('email');
 
 		$otp = $this->input->post('otp');
 

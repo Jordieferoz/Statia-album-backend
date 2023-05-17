@@ -1,21 +1,27 @@
 <?php
 
-function sendsms($email, $vars) {
-    // $from = 'statiagallery@gmail.com';
+function sendsms($email, $vars)
+{
+    // $from = 'info@cubicdash.com';//'statiagallery@gmail.com';
     // $ci = &get_instance();
-    // $config = array(
-    //     'protocol' => 'smtp',
-    //     'smtp_host' => 'ssl://smtp.googlemail.com',
-    //     'smtp_port' => 465,
-    //     'smtp_user' => $from,
-    //     'smtp_pass' => 'Stati@dmin',
-    //     'mailtype' => 'html',
-    //     'charset' => 'iso-8859-1',
-    //     'wordwrap' => TRUE
-    // );
+
+    // $ci->load->library('email');
+    // $config = array();
+    // $config['protocol']     = "smtp";
+    // $config['smtp_host']    = "smtp.hostinger.com";
+    // $config['smtp_user']    = $from;
+    // $config['smtp_pass']    = "Info@CD4";//"Stati@dmin";
+    // $config['smtp_port']    =  465;
+    // $config['smtp_crypto']  = 'ssl';
+    // $config['smtp_timeout'] = "";
+    // $config['mailtype']     = "html";
+    // $config['charset']      = "iso-8859-1";
+    // $config['newline']      = "\r\n";
+    // $config['wordwrap']     = TRUE;
+    // $config['validate']     = FALSE;
+    // $ci->email->initialize($config);
 
     // $message = 'Hello,\nPlease use this OTP for your account. \n\n OTP: ' . $vars['var1'];
-    // $ci->load->library('email', $config);
     // $ci->email->set_newline("\r\n");
     // $ci->email->from($from);
     // $ci->email->to($email);
@@ -24,6 +30,6 @@ function sendsms($email, $vars) {
     // if ($ci->email->send()) {
     //     echo 'Email sent.';
     // } else {
-    //     show_error($ci->email->print_debugger());
+    //     echo ($ci->email->print_debugger());
     // }
 }
