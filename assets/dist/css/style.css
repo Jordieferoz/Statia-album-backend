@@ -18591,6 +18591,9 @@ table.dataTable {
       background-color: #F9951A;
       color: white;
     }
+    ::file-selector-button {
+      display: none;
+    }
       .avatar .avatar-text .initial-wrap > span {
         position: relative;
         display: table-cell;
