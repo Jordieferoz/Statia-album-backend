@@ -1,11 +1,12 @@
 <div class="container">
     <div class="full-width-div">
-        <div class="row">
-            <div class="col-md-6 col-sm-12 d-flex justify-content-start login-left-image" style="border: 1px solid black;">
-                <img src="<?= base_url('/assets/site/images/hero-title.svg') ?>" alt="">
+        <div class="row fill">
+            <div class="col-md-6 col-sm-12 d-none d-md-flex d-flex justify-content-start login-left-image">
+                <img src="<?= base_url('/assets/site/images/hero-title.svg') ?>" alt="img" class="h-50 mt-5" />
+                <p class="footer_text text-muted p-5"> &copy; 2023 Statia-tourism. All Right Reserved.</p>
             </div>
-            <div class="col-md-6 col-sm-12 login_part" style="border: 1px solid black;">
-                <div class="form_box p-4 d-flex justify-content-center">
+            <div class="col-md-12 col-sm-12 login_part d-flex justify-content-center">
+                <div class="form_box shadow-lg p-4">
                     <form class="register-form" action="<?php echo site_url('account/authenticate'); ?>" method="post" role="form">
                         <p class="hello_head mb-3">Hello!</p>
                         <p class="text-center hello_head_sm mb-2">Please enter your credentials</p>

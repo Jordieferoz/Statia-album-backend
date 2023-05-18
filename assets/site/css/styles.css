@@ -709,17 +709,20 @@ body.sidebar-menu-open .sidebar-menu {
   padding-left: 66px;
 }
 .login_part{ 
-  height: 75vh; 
+  /* height: 75vh; */
   background-image: url(../images/bg.jpeg) !important; 
-  background-size: contain; 
+  background-size: contain;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
-  
+  width: 50%;
+}
+.fill {
+  min-height: calc(100vh - 173px);
+  height: calc(100vh - 173px);
 }
 .form_box{
-  width: 60%;
+  width: 28vw;
+  height: 80%;
+  margin-top: 30px;
   background: rgb(211,215,215);
   background: linear-gradient(0deg, rgba(211,215,215,0.7120098039215687) 0%, rgba(255,253,253,1) 100%); 
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
