@@ -24,7 +24,7 @@ class Account extends CI_Controller
 
 		$this->load->view('site/layouts/header');
 		$this->load->view('site/account/login');
-		$this->load->view('site/layouts/footer');
+		$this->load->view('site/layouts/footer', [ 'HIDE_CONTENT' => true ]);
 	}
 
 	public function authenticate()
@@ -47,7 +47,7 @@ class Account extends CI_Controller
 			$isValidEmail = $this->Crud->Count('users', " `email` = '$email'");
 
 			if ($isValidEmail == 0) {
-				$this->session->set_flashdata('warning', "Email not registered");
+				$this->session->set_flashdata('danger', "Email not registered");
 				redirect('account/login');
 			}
 
@@ -150,7 +150,7 @@ class Account extends CI_Controller
 
 		$this->load->view('site/layouts/header');
 		$this->load->view('site/account/register');
-		$this->load->view('site/layouts/footer');
+		$this->load->view('site/layouts/footer', [ 'HIDE_CONTENT' => true ]);
 	}
 
 	public function registerer()
@@ -242,7 +242,7 @@ class Account extends CI_Controller
 
 		$this->load->view('site/layouts/header');
 		$this->load->view('site/account/verification');
-		$this->load->view('site/layouts/footer');
+		$this->load->view('site/layouts/footer', [ 'HIDE_CONTENT' => true ]);
 	}
 
 	public function verify()
@@ -387,7 +387,7 @@ class Account extends CI_Controller
 
 		$this->load->view('site/layouts/header');
 		$this->load->view('site/account/recover');
-		$this->load->view('site/layouts/footer');
+		$this->load->view('site/layouts/footer', [ 'HIDE_CONTENT' => true ]);
 	}
 
 	public function otp()
@@ -421,7 +421,7 @@ class Account extends CI_Controller
 
 			$this->session->set_flashdata('success', "OTP sent to registered email.");
 
-			// redirect('account/recover/?email=' . $email);
+			redirect('account/recover/?email=' . $email);
 		} else {
 
 			$this->session->set_flashdata('danger', "Email not registered! <a href = '" . site_url('account/register/') . "'>Register now</a>");
@@ -487,7 +487,7 @@ class Account extends CI_Controller
 
 		$this->load->view('site/layouts/header');
 		$this->load->view('site/account/change');
-		$this->load->view('site/layouts/footer');
+		$this->load->view('site/layouts/footer', [ 'HIDE_CONTENT' => true ]);
 	}
 
 	public function changer()

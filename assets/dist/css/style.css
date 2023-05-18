@@ -14035,7 +14035,7 @@ Project:	Marvin
 .hk-wrapper .hk-navbar {
   padding-top: 0;
   padding-bottom: 0;
-  box-shadow: 0 0 28px rgba(0, 0, 0, 0.07); }
+}
   .hk-wrapper .hk-navbar .feather-icon {
     display: block; }
     .hk-wrapper .hk-navbar .feather-icon > svg {
@@ -18591,6 +18591,9 @@ table.dataTable {
       background-color: #F9951A;
       color: white;
     }
+    ::file-selector-button {
+      display: none;
+    }
       .avatar .avatar-text .initial-wrap > span {
         position: relative;
         display: table-cell;
@@ -20736,3 +20739,17 @@ table.dataTable {
   /* IE11 */ }
 
 /*# sourceMappingURL=style.css.map */
+/* input[type=file] {
+  color: transparent !important;
+} */
+input[type=file]::before {
+  content: "Click to Upload Media";
+  color: black;
+  margin-right: 10px; 
+}
+
+.hk-wrapper .hk-navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: 1px solid #ddd;
+}

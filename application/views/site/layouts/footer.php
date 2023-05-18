@@ -1,12 +1,14 @@
     </div>
     </section>
     </main>
+    <?php if (!isset($HIDE_CONTENT)) { ?>
     <footer style="margin-top: auto;">
       <div class="container">
         <p class="paragraph2 border-top">© <?= date("Y") ?> Statia-tourism. All Rights
           Reserved.</p>
       </div>
     </footer>
+    <?php } ?>
     </div>
     </body>
 

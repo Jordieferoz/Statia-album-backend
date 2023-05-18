@@ -1,25 +1,37 @@
 <div class="container">
-    <div class="row">
-        <div class="col-md-4 mx-auto col-sm-12">
-            <h4 class="">Login</h4>
-            <p class="">Please enter your credentials to sign in.</p>
-            <form class="register-form outer-top-xs" action="<?php echo site_url('account/authenticate'); ?>" method="post" role="form">
-                <div class="form-group mt-3">
-                    <label class="info-title" for="email">Email <span>*</span></label>
-                    <input type="email" placeholder="Enter email" class="form-control unicase-form-control" id="email" name="email" value="<?php echo ($this->uri->segment(3)) ? $this->uri->segment(3) : set_value('email'); ?>">
-                    <span class="text-danger"><?php echo form_error('email'); ?></span>
+    <div class="full-width-div">
+        <div class="row fill">
+            <div class="col-md-6 col-sm-12 d-none d-md-flex d-flex justify-content-start login-left-image">
+                <img src="<?= base_url('/assets/site/images/hero-title.svg') ?>" draggable="false" alt="img" class="h-50 mt-5" />
+                <p class="footer_text text-muted p-5"> &copy; 2023 Statia-tourism. All Right Reserved.</p>
+            </div>
+            <div class="col-md-12 col-sm-12 login_part d-flex justify-content-center">
+                <div class="form_box shadow-lg p-4">
+                    <form class="register-form" action="<?php echo site_url('account/authenticate'); ?>" method="post" role="form">
+                        <p class="hello_head mb-3">Hello!</p>
+                        <p class="text-center hello_head_sm mb-2">Please enter your credentials</p>
+                        <p class="text-center hello_head_md mb-3">Don't have an account? <a href="<?php echo site_url('account/register'); ?>" class="link-warning underline">Register here</a></p>
+                        <div class="form-outline mb-3">
+                            <input type="email" placeholder="Enter email" class="form-control unicase-form-control p-3" id="email" name="email" value="<?php echo ($this->uri->segment(3)) ? $this->uri->segment(3) : set_value('email'); ?>">
+                            <span class="text-danger"><?php echo form_error('email'); ?></span>
+                        </div>
+                        <div class="form-outline mb-3">
+                            <input type="password" placeholder="Enter your password" class="form-control unicase-form-control text-input p-3" id="password" name="password" value="<?php echo set_value('password'); ?>">
+                            <span class="text-danger"><?php echo form_error('password'); ?></span>
+                        </div>
+                        <div class="pt-1 mb-4">
+                            <button type="submit" class="btn btn-warning text-light btn-lg btn-block w-100">Login</button>
+                        </div>
+                        <p class="text-center">
+                            <a href="<?php echo site_url('account/recover'); ?>" class="underline text-secondary">Forgot your Password?</a>
+                        </p>
+                        <div class="row">
+                            <div class="col-12 mb-5">
+                                <?php $this->load->view('site/layouts/error_messages') ?>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group mt-3">
-                    <label class="info-title" for="password">Password <span>*</span></label>
-                    <input type="password" placeholder="Enter your password" class="form-control unicase-form-control text-input" id="password" name="password" value="<?php echo set_value('password'); ?>">
-                    <span class="text-danger"><?php echo form_error('password'); ?></span>
-
-                    <button type="submit" class="btn btn-primary mt-3">Login</button>
-                </div>
-                <a href="<?php echo site_url('account/recover'); ?>" class="forgot-password" style="color: white;">Forgot your Password?</a><br />
-            </form>
-            <br />
-            <p>Don't have an account? <a class="primary-link" href="<?php echo site_url('account/register'); ?>" class="">Register here</a></p>
+            </div>
         </div>
     </div>
-</div>
