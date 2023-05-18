@@ -14035,7 +14035,7 @@ Project:	Marvin
 .hk-wrapper .hk-navbar {
   padding-top: 0;
   padding-bottom: 0;
-  box-shadow: 0 0 28px rgba(0, 0, 0, 0.07); }
+}
   .hk-wrapper .hk-navbar .feather-icon {
     display: block; }
     .hk-wrapper .hk-navbar .feather-icon > svg {
@@ -20746,4 +20746,10 @@ input[type=file]::before {
   content: "Click to Upload Media";
   color: black;
   margin-right: 10px; 
+}
+
+.hk-wrapper .hk-navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: 1px solid #ddd;
 }

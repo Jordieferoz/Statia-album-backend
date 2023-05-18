@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-xl-6 mx-auto pa-0" style="margin: 15%;">
+    <div class="col-xl-5 mx-auto pa-0" style="margin: 15%;">
         <div class="card py-xl-0">
             <div class="card-body">
                 <?php
@@ -10,7 +10,7 @@
                 <form method="post" action="<?php echo site_url('admin/authentication/processLogin'); ?>">
                     <center>
                         <img src="<?= base_url('assets/site/images/logo.png') ?>" alt="logo" height="80" width="90" />
-                        <h1 class="display-4" style="font-weight: 700;">Welcome Admin!</h1>
+                        <h1 class="display-5" style="font-weight: 700;">Welcome Admin!</h1>
                         <p class="mb-30">Login to your account</p>
                     </center>
                     <div class="form-group">

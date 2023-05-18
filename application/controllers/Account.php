@@ -24,7 +24,7 @@ class Account extends CI_Controller
 
 		$this->load->view('site/layouts/header');
 		$this->load->view('site/account/login');
-		$this->load->view('site/layouts/footer');
+		$this->load->view('site/layouts/footer', [ 'HIDE_CONTENT' => true ]);
 	}
 
 	public function authenticate()
