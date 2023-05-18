@@ -335,7 +335,7 @@ body.sidebar-menu-open .sidebar-menu {
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 5px;
 }
 .section-title::after {
   content: "";
@@ -347,8 +347,8 @@ body.sidebar-menu-open .sidebar-menu {
 .mediaCard {
   position: relative;
   cursor: pointer;
-  height: 380px;
-  margin-right: 12px;
+  height: 280px;
+  margin-right: -5px;
 }
 .mediaCard img {
   width: 100%;
@@ -357,8 +357,9 @@ body.sidebar-menu-open .sidebar-menu {
 }
 .mediaCard .media-content {
   position: absolute;
+  line-height: 1px !important;
   left: 26px;
-  bottom: 26px;
+  bottom: 10px;
   text-align: left;
   z-index: 99;
 }
@@ -412,6 +413,7 @@ body.sidebar-menu-open .sidebar-menu {
   list-style: none;
   padding: 20px 10px;
   text-align: left;
+  margin-top: 10px;
 }
 
 .categories-list p {
@@ -664,3 +666,93 @@ body.sidebar-menu-open .sidebar-menu {
 .fancybox-button--share, .fancybox-button--play{
   display:none !important;
 }
+
+.card-img-top {
+  height: 15vw;
+  object-fit: cover;
+}
+
+.category-card {
+  border: none !important;
+  border-radius: 0%;
+}
+
+.decrease-line-height {
+  line-height: 10px !important;
+}
+
+/* Login================ */
+.sm_text{
+  color: #9A9A9A;
+  font-size: 18px;
+  font-weight: 500;
+  padding-left: 66px;
+}
+.main_text_div{
+ 
+  border-left: 50px solid #E5E5E5 ;
+}
+.main_text1{
+  color: #363636;
+  font-size: 90px;
+  font-weight: 800;
+  line-height: 75px;
+  padding-left: 25px;
+}
+.main_text2{
+  color: #F9951D;
+  font-size: 90px;
+  font-weight: 800;
+}
+.sub_main_text{
+  color: #9A9A9A;
+  font-size: 25px;
+  font-weight: 500;
+  padding-left: 66px;
+}
+.login_part{ 
+  /* height: 90vh;  */
+  background-image: url(../images/bg.jpeg) !important; 
+  background-size: contain; 
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  
+}
+.form_box{
+  width: 86%; 
+  background: rgb(211,215,215);
+  background: linear-gradient(0deg, rgba(211,215,215,0.7120098039215687) 0%, rgba(255,253,253,1) 100%); 
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  
+}
+.hello_head{
+  color: #676767;
+  font-size: 60px;
+  font-weight: 700;
+  text-align: center; 
+  margin-bottom:0; 
+  padding-top: 46px;         
+}
+.hello_head_sm{
+   font-size: 14px;
+   font-weight: 500;
+   color: #8c8b8b;
+  }
+  .hello_head_md{
+      color: #676767;
+      font-size: 16px;
+      font-weight: 600;
+      
+      
+  }
+  .small{
+      font-size: 14px;
+      font-weight: 500;
+      color: #8c8b8b;
+     }
+  .footer_text{
+      position: absolute;
+      bottom: 0px;
+  }

@@ -10,7 +10,7 @@
                     </div>
 
                     <div class="col-sm-4">
-                        <input type="file" name="categoryImage" accept="images/*" class="form-control" id="categoryImage" required>
+                        <input type="file" title="Click to select a file for upload" name="categoryImage" accept="images/*" class="form-control" id="categoryImage" required>
                     </div>
 
                     <div class="col-sm-4">

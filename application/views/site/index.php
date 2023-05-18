@@ -1,3 +1,25 @@
+<style>
+  .photos-and-categories {
+    animation: fadeInAnimation ease 1.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes fadeInAnimation {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .photos-and-categories {
+    opacity: 0;
+    transition: opacity 5s;
+  }
+</style>
 <div class="row">
   <div class="col-3">
     <ul class="categories-list">
@@ -17,35 +39,50 @@
       <?php } ?>
     </ul>
   </div>
-  <div class="col-9">
+  <div class="col-9 photos-and-categories">
     <h3 class="section-title heading5"><?= !isset($_GET['category']) ? 'All Photos' : $CATEGORIES[array_search($_GET['category'], array_column($CATEGORIES, 'id'), 'id')]->category ?></h3>
+    <?php if (!isset($_GET['category'])) {
+      $count = 0;
+      foreach ($CATEGORIES as $category) {
+    ?>
+        <?= $count % 3 === 0 ? '<div class="row">' : '' ?>
+        <div class="col-md-4 sol-sm-6 col-xs-12 p-2" style="cursor: pointer;" onclick="window.location.assign('<?= base_url('/?category=' . $category->id) ?>')">
+          <div class="card category-card shadow">
+            <img class="card-img-top p-2" src="<?= !$category->file_name ? base_url('assets/site/images/no-img.jpg') : base_url('uploads/categories/' . $category->file_name) ?>" alt="Category image cap">
+            <div class="card-body">
+              <p class="card-text">
+                <center>
+                  <p><?= $category->category ?></p>
+                </center>
+              </p>
+            </div>
+          </div>
+        </div>
     <?php
-    if (count($PHOTOS) == 0) {
+        if ($count % 3 == 2) {
+          echo '</div>';
+        }
+        $count++;
+      }
+    } ?>
+    <?php
+    if (count($PHOTOS) == 0 && isset($_GET['category'])) {
       echo '<center>No photos to show</center>';
     }
     $count = 0;
     foreach ($PHOTOS as $photo) {
     ?>
       <?= $count % 3 === 0 ? '<div class="row">' : '' ?>
-      <div class="col-md-4 sol-sm-6 col-xs-12 mt-3">
-        <!-- <div class="mediaCard"> -->
-        <div class="gallery clear">
-          <div class="bg" style="background-image: url(<?= $photo->is_image == 1 ? base_url('uploads/photos/' . $photo->file_name) : ($photo->thumbnail_path ? base_url('uploads/thumbnails/' . $photo->thumbnail_path) : base_url('assets/site/images/no-image-placeholder.png')) ?>);">
-            <div class="img_header ">
-            <?php if($photo->is_image == 0) { ?>
-              <img class="play_button" src="<?= base_url() ?>assets/site/images/Play button.svg" />
-              <?php } ?>
-            </div>
-
-            <div class="media-content">
-              <h4 class="heading2"><?= $photo->title ? $photo->title : 'No title' ?></h4>
-              <h5 class="sub-heading" title="<?= $photo->orig_name ?>"><?= strlen($photo->orig_name) > 20 ? mb_substr($photo->orig_name, 0, 20) . '...' : $photo->orig_name; ?></h5>
-              <p class="supported-text media-views"> <?= $photo->total_views == 0 ? 'No' : $photo->total_views ?> views</p>
-            </div>
+      <div class="col-md-4 sol-sm-6 col-xs-12 py-2">
+        <div class="mediaCard gallery clear">
+          <img class="bg" src="<?= $photo->is_image == 1 ? base_url('uploads/photos/' . $photo->file_name) : ($photo->thumbnail_path ? base_url('uploads/thumbnails/' . $photo->thumbnail_path) : base_url('assets/site/images/no-image-placeholder.png')) ?>" />
+          <div class="media-content">
+            <h4 class="heading2 decrease-line-height"><?= $photo->title ? $photo->title : 'No title' ?></h4>
+            <h5 class="sub-heading" title="<?= $photo->orig_name ?>"><?= strlen($photo->orig_name) > 20 ? mb_substr($photo->orig_name, 0, 20) . '...' : $photo->orig_name; ?></h5>
+            <p class="supported-text media-views"> <?= $photo->total_views == 0 ? 'No' : $photo->total_views ?> views</p>
           </div>
+          <div class="media-card-overlay"></div>
         </div>
-        <div class="media-card-overlay"></div>
-        <!-- </div> -->
       </div>
     <?php
       if ($count % 3 == 2) {

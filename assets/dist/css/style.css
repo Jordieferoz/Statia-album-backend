@@ -20739,3 +20739,11 @@ table.dataTable {
   /* IE11 */ }
 
 /*# sourceMappingURL=style.css.map */
+/* input[type=file] {
+  color: transparent !important;
+} */
+input[type=file]::before {
+  content: "Click to Upload Media";
+  color: black;
+  margin-right: 10px; 
+}

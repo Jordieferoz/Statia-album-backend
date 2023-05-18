@@ -23,7 +23,7 @@
                         </div>
                         <span class="text-error"><?php echo form_error('password'); ?></span>
                     </div>
-                    <button class="btn btn-primary btn-block" name="login" type="submit">Start session</button>
+                    <button class="btn btn-primary btn-block" name="login" type="submit">Login</button>
                 </form>
             </div>
         </div>

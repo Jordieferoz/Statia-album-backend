@@ -31,12 +31,11 @@ class Welcome extends CI_Controller
 
 	public function index()
 	{
-		$data['CATEGORIES'] = $this->Crud->Read('categories', " `is_active` = '1'");
+		$data['PHOTOS'] = [];
+		$data['CATEGORIES'] = $this->Crud->Read('categories', " `is_active` = '1' ORDER BY category ASC");
 		if (isset($_GET['category'])) {
 			$category_id = $_GET['category'];
 			$data['PHOTOS'] = $this->Crud->Read('photos', " `status` = '1' AND `category_id` = '$category_id' ORDER BY id DESC LIMIT 10");
-		} else {
-			$data['PHOTOS'] = $this->Crud->Read('photos', " `status` = '1' ORDER BY id DESC LIMIT 10");
 		}
 		$this->load->view('site/layouts/header');
 		$this->load->view('site/index', $data);
