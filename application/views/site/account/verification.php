@@ -1,14 +1,30 @@
-<div class="row">
-    <!-- Sign-in -->
-    <div class="col-md-4 col-sm-12 mx-auto">
-        <h2 class="heading-title">Verify your email</h2>
-        <span class="title-tag inner-top-ss">We have sent an OTP (One Time Password) to your email.</span>
-        <form class="register-form outer-top-xs" action="<?php echo site_url('account/verify/' . $this->uri->segment(3)); ?>" method="post" role="form">
-            <div class="form-group">
-                <label class="info-title" for="otp">OTP *</label>
-                <input type="text" pattern="[0-9]{6}" maxlength="6" required placeholder="Enter your OTP here" class="form-control unicase-form-control text-input" id="otp" name="otp">
+<div class="container">
+    <div class="full-width-div">
+        <div class="row fill">
+            <div class="col-md-6 col-sm-12 d-none d-md-flex d-flex justify-content-start login-left-image">
+                <img src="<?= base_url('/assets/site/images/hero-title.svg') ?>" draggable="false" alt="img" class="h-50 mt-5" />
+                <p class="footer_text text-muted p-5"> &copy; 2023 Statia-tourism. All Right Reserved.</p>
             </div>
-            <button type="submit" class="btn-upper btn btn-primary mt-3">Verify</button>
-        </form>
+            <div class="col-md-12 col-sm-12 login_part d-flex justify-content-center">
+                <div class="form_box shadow-lg p-4">
+                    <form class="register-form" action="<?php echo site_url('account/verify/' . $this->uri->segment(3)); ?>" method="post" role="form">
+                        <p class="hello_head mb-3">Verify your email</p>
+                        <p class="text-center hello_head_sm mb-2">We have sent an OTP (One Time Password) to your email.</p>
+                        <div class="form-group">
+                            <label class="info-title" for="otp">OTP *</label>
+                            <input type="text" pattern="[0-9]{6}" maxlength="6" required placeholder="Enter your OTP here" class="form-control unicase-form-control text-input p-3" id="otp" name="otp">
+                        </div>
+                        <div class="pt-1 mb-4">
+                            <button type="submit" class="btn btn-warning text-light btn-lg btn-block w-100">Verify</button>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 mb-5">
+                                <?php $this->load->view('site/layouts/error_messages') ?>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
