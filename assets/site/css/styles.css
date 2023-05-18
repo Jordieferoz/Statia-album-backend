@@ -721,7 +721,7 @@ body.sidebar-menu-open .sidebar-menu {
 }
 .form_box{
   width: 28vw;
-  height: 80%;
+  height: 85%;
   margin-top: 30px;
   background: rgb(211,215,215);
   background: linear-gradient(0deg, rgba(211,215,215,0.7120098039215687) 0%, rgba(255,253,253,1) 100%); 
@@ -775,4 +775,25 @@ body.sidebar-menu-open .sidebar-menu {
 
 .underline {
   text-decoration: underline;
+}
+
+.msg {
+  color: white;
+  padding: 10px 0px;
+}
+
+.msg-success {
+  background-color: #4bb543;
+}
+
+.msg-info {
+  background-color: #00FFFF;
+}
+
+.msg-danger {
+  background-color: #FF0000;
+}
+
+.msg-warning {
+  background-color: rgb(238, 200, 134);
 }

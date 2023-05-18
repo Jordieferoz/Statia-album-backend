@@ -47,7 +47,7 @@ class Account extends CI_Controller
 			$isValidEmail = $this->Crud->Count('users', " `email` = '$email'");
 
 			if ($isValidEmail == 0) {
-				$this->session->set_flashdata('warning', "Email not registered");
+				$this->session->set_flashdata('danger', "Email not registered");
 				redirect('account/login');
 			}
 

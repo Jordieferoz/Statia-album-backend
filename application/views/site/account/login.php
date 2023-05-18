@@ -2,7 +2,7 @@
     <div class="full-width-div">
         <div class="row fill">
             <div class="col-md-6 col-sm-12 d-none d-md-flex d-flex justify-content-start login-left-image">
-                <img src="<?= base_url('/assets/site/images/hero-title.svg') ?>" alt="img" class="h-50 mt-5" />
+                <img src="<?= base_url('/assets/site/images/hero-title.svg') ?>" draggable="false" alt="img" class="h-50 mt-5" />
                 <p class="footer_text text-muted p-5"> &copy; 2023 Statia-tourism. All Right Reserved.</p>
             </div>
             <div class="col-md-12 col-sm-12 login_part d-flex justify-content-center">
@@ -25,8 +25,12 @@
                         <p class="text-center">
                             <a href="<?php echo site_url('account/recover'); ?>" class="underline text-secondary">Forgot your Password?</a>
                         </p>
+                        <div class="row">
+                            <div class="col-12 mb-5">
+                                <?php $this->load->view('site/layouts/error_messages') ?>
+                            </div>
+                        </div>
                     </form>
-
                 </div>
             </div>
         </div>
