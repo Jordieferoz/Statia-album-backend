@@ -88,6 +88,18 @@ class Welcome extends CI_Controller
 		}
 	}
 
+	public function updatePagination()
+	{
+		$id = $_GET['id'];
+		$photoRecord = $this->Crud->Read('photos', " `id` = '$id'");
+		if (count($photoRecord) == 1) {
+			$this->Crud->Update('photos', [
+				'total_views' => $photoRecord[0]->total_views + 1
+			], " `id` = '$id'");
+			return true;
+		} else return false;
+	}
+
 	public function getOS()
 	{
 
