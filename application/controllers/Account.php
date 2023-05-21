@@ -157,7 +157,7 @@ class Account extends CI_Controller
 	{
 
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
-		$this->form_validation->set_rules('phone', 'Phone', 'required|trim');
+		$this->form_validation->set_rules('phone', 'Phone', 'trim');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|is_unique[users.email]');
 
