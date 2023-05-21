@@ -131,7 +131,7 @@ class Photos extends CI_Controller {
 
 			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 
-			$config['max_size'] = 2000;
+			// $config['max_size'] = 2000;
 
 			$config['encrypt_name'] = TRUE;
 
@@ -318,7 +318,7 @@ class Photos extends CI_Controller {
 
 				$config['allowed_types'] = 'gif|jpg|png|jpeg';
 
-				$config['max_size'] = 2000;
+				// $config['max_size'] = 2000;
 
 				$config['encrypt_name'] = TRUE;
 
@@ -557,7 +557,7 @@ class Photos extends CI_Controller {
 
 		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 
-		$config['max_size'] = 2000;
+		// $config['max_size'] = 2000;
 
 		$config['encrypt_name'] = TRUE;
 
