@@ -83,7 +83,7 @@
             </div>
             <div class="media-content">
               <h4 class="heading2 decrease-line-height"><?= $photo->title ? $photo->title : 'No title' ?></h4>
-              <h5 class="sub-heading" title="<?= $photo->orig_name ?>"><?= strlen($photo->orig_name) > 20 ? mb_substr($photo->orig_name, 0, 20) . '...' : $photo->orig_name; ?></h5>
+              <h5 class="sub-heading" title="<?= $photo->description ?>"><?= strlen($photo->description) > 20 ? mb_substr($photo->description, 0, 20) . '...' : $photo->description; ?></h5>
               <p class="supported-text media-views"> <?= $photo->total_views == 0 ? 'No' : $photo->total_views ?> views</p>
             </div>
             <div class="media-card-overlay"></div>

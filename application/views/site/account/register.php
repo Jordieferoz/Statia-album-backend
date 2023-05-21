@@ -5,7 +5,8 @@
                 <img src="<?= base_url('/assets/site/images/hero-title.svg') ?>" draggable="false" alt="img" class="h-50 mt-5" />
                 <p class="footer_text text-muted p-5"> &copy; 2023 Statia-tourism. All Right Reserved.</p>
             </div>
-            <div class="col-md-12 col-sm-12 login_part d-flex justify-content-center">
+            <div class="col-md-6 col-sm-12 login_part ">
+                <div class="row  d-flex justify-content-center" >
                 <div class="form_box shadow-lg p-4">
 
                     <form class="form-inline" action="<?php echo site_url('account/registerer'); ?>" method="post" role="form">
@@ -38,13 +39,15 @@
                         <!-- <button type="submit" class="btn-upper btn btn-warning mt-3">Register</button> -->
                         <p class="text-center">Already have an account?<br /><a href="<?php echo site_url('account/login'); ?>" class="link-warning underline">Login?</a>
                         </p>
-                        <div class="row">
-                            <div class="col-12 mb-5">
-                                <?php $this->load->view('site/layouts/error_messages') ?>
-                            </div>
-                        </div> <br>
+                        
                     </form>
 
+                </div>
+                </div>
+                <div class="row d-flex justify-content-center" style="margin-bottom:20px;">
+                <div class="errox_msg_box">
+                    <?php $this->load->view('site/layouts/error_messages') ?>
+                    </div>
                 </div>
             </div>
         </div>

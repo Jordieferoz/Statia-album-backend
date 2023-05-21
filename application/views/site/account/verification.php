@@ -5,7 +5,8 @@
                 <img src="<?= base_url('/assets/site/images/hero-title.svg') ?>" draggable="false" alt="img" class="h-50 mt-5" />
                 <p class="footer_text text-muted p-5"> &copy; 2023 Statia-tourism. All Right Reserved.</p>
             </div>
-            <div class="col-md-12 col-sm-12 login_part d-flex justify-content-center">
+            <div class="col-md-6 col-sm-12 login_part ">
+                <div class="row  d-flex justify-content-center" >
                 <div class="form_box shadow-lg p-4">
                     <form class="register-form" action="<?php echo site_url('account/verify/' . $this->uri->segment(3)); ?>" method="post" role="form">
                         <p class="hello_head mb-3">Verify your email</p>
@@ -17,12 +18,15 @@
                         <div class="pt-1 mb-4">
                             <button type="submit" class="btn btn-warning text-light btn-lg btn-block w-100">Verify</button>
                         </div>
-                        <div class="row">
-                            <div class="col-12 mb-5">
-                                <?php $this->load->view('site/layouts/error_messages') ?>
-                            </div>
-                        </div>
+                        
+                        
                     </form>
+                </div>
+                </div>
+                <div class="row d-flex justify-content-center" style="margin-bottom:20px;">
+                <div class="errox_msg_box">
+                    <?php $this->load->view('site/layouts/error_messages') ?>
+                    </div>
                 </div>
             </div>
         </div>
