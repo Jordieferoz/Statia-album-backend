@@ -84,7 +84,7 @@
             <div class="media-content">
               <h4 class="heading2 decrease-line-height"><?= $photo->title ? $photo->title : 'No title' ?></h4>
               <h5 class="sub-heading" title="<?= strip_tags($photo->description) ?>"><?= strlen($photo->description) > 20 ? mb_substr(strip_tags($photo->description), 0, 20) . '...' : strip_tags($photo->description); ?></h5>
-              <p class="supported-text media-views"> <?= $photo->total_views == 0 ? 'No' : $photo->total_views ?> views</p>
+              <p class="supported-text media-views"><span id="image-<?= $photo->id ?>"><?= $photo->total_views == 0 ? 'No' : $photo->total_views ?></span> views</p>
             </div>
             <div class="media-card-overlay"></div>
           </div>
@@ -130,8 +130,8 @@
     });
 
     $("[data-fancybox]").fancybox({
-      beforeShow: function(e) {
-        let photoId = $(this).find("img").attr("alt");
+      afterLoad: function(instance, current) {
+        let photoId = current.opts.$orig.find('.bg').attr('alt')//e.curr;
         debugger
         $.ajax({
           async: true,
@@ -140,6 +140,17 @@
           type: 'GET',
           success: function(res) {
             console.log(res)
+            if (res == "true") {
+              let updatedValue = 0
+              let views = $(`#image-${photoId}`).text()
+              if (views === 'No') {
+                updatedValue = 1
+              } else {
+                updatedValue = Number(views) + 1
+                $(`#image-${photoId}`).html(updatedValue)
+              }
+
+            }
           }
         });
       },
