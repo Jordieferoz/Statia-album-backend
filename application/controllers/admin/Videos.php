@@ -131,7 +131,7 @@ class Videos extends CI_Controller {
 
 			$config['allowed_types'] = 'mp4|wmv|mpeg|mov|mpg';
 
-			$config['max_size'] = 20480;
+			// $config['max_size'] = 20480;
 
 			$config['encrypt_name'] = TRUE;
 
@@ -155,7 +155,7 @@ class Videos extends CI_Controller {
 
 				$config['allowed_types'] = 'gif|jpg|png|jpeg';
 
-				$config['max_size'] = 2000;
+				// $config['max_size'] = 2000;
 
 				$config['encrypt_name'] = TRUE;
 
@@ -346,7 +346,7 @@ class Videos extends CI_Controller {
 
 				$config['allowed_types'] = 'gif|jpg|png|jpeg';
 
-				$config['max_size'] = 2000;
+				// $config['max_size'] = 2000;
 
 				$config['encrypt_name'] = TRUE;
 
@@ -369,7 +369,7 @@ class Videos extends CI_Controller {
 
 				$config['allowed_types'] = 'mp4|wmv|mpeg|mov|mpg';
 
-				$config['max_size'] = 20480;
+				// $config['max_size'] = 20480;
 
 				$config['encrypt_name'] = TRUE;
 

@@ -33,9 +33,34 @@ class Welcome extends CI_Controller
 	{
 		$data['PHOTOS'] = [];
 		$data['CATEGORIES'] = $this->Crud->Read('categories', " `is_active` = '1' ORDER BY category ASC");
-		if (isset($_GET['category'])) {
-			$category_id = $_GET['category'];
-			$data['PHOTOS'] = $this->Crud->Read('photos', " `status` = '1' AND `category_id` = '$category_id' ORDER BY id DESC LIMIT 10");
+		if ($this->uri->segment(3)) {
+			$category_id = $this->uri->segment(3);
+
+			$config = array();
+                $config["base_url"] = base_url() . "welcome/index/" . $category_id;
+                $config["total_rows"] = $this->Crud->Count('photos', " `status` = '1' AND `category_id` = '$category_id'");
+                $config["per_page"] = 60;
+                $config["uri_segment"] = 4;
+                $config['full_tag_open']    = "<ul class='list-inline list-unstyled'>";
+                $config['full_tag_close']   = "</ul>";
+                $config['num_tag_open']     = '<li class = "next" style="padding: 1em; margin: 5px;">';
+                $config['num_tag_close']    = '</li>';
+                $config['cur_tag_open']     = "<li class='disabled'><li class='active' style = 'color: #f9951a; padding: 1em; margin: 5px;'>";
+                $config['cur_tag_close']    = "<span class='sr-only'></span></li>";
+                $config['next_tag_open']    = "<li class='prev' style = 'background: #f9951a; padding: 1em; margin: 5px;'>";
+                $config['next_tagl_close']  = "</li>";
+                $config['prev_tag_open']    = "<li class='prev' style = 'background: #f9951a; padding: 1em; margin: 5px;'>";
+                $config['prev_tagl_close']  = "</li>";
+                $config['first_tag_open']   = "<li class='prev' style = 'background: #f9951a; padding: 1em; margin: 5px;'>";
+                $config['first_tagl_close'] = "</li>";
+                $config['last_tag_open']    = "<li class='next' style = 'background: #f9951a; padding: 1em; margin: 5px;'>";
+                $config['last_tagl_close']  = "</li>";
+                $this->pagination->initialize($config);
+                $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+				echo $page;
+
+			$data['PHOTOS'] = $this->Crud->Read('photos', " `status` = '1' AND `category_id` = '$category_id' ORDER BY id DESC LIMIT $page, 60");
+			$data["links"] = $this->pagination->create_links();
 		}
 		$this->load->view('site/layouts/header');
 		$this->load->view('site/index', $data);
