@@ -820,7 +820,28 @@ body.sidebar-menu-open .sidebar-menu {
   }
   .card-img-top {
     height: 70vw;
-    
+  }
 }
- 
+
+.list-inline li {
+  cursor: pointer;
+  padding: 7px 0px;
+  -webkit-transition: all 0.2s linear 0s;
+  -moz-transition: all 0.2s linear 0s;
+  -o-transition: all 0.2s linear 0s;
+  transition: all 0.2s linear 0s;
+  color: #888 !important;
+  display: inline-block;
+}
+
+.list-inline li a {
+  color: var(--orange);
+}
+
+.list-inline .next {
+  color: white !important;
+}
+
+.list-inline {
+  margin-top: 50px;
 }

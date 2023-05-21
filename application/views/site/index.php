@@ -75,7 +75,7 @@
       <?= $count % 3 === 0 ? '<div class="row">' : '' ?>
       <div class="col-md-4 sol-sm-6 col-xs-12 py-2">
         <div class="mediaCard gallery clear">
-          <div class="bg" style="background-image: url(<?= $photo->is_image == 1 ? base_url('uploads/photos/' . $photo->file_name) : ($photo->thumbnail_path ? base_url('uploads/thumbnails/' . $photo->thumbnail_path) : base_url('assets/site/images/no-image-placeholder.png')) ?>)">
+          <div class="bg" alt="<?= $photo->id ?>" style="background-image: url(<?= $photo->is_image == 1 ? base_url('uploads/photos/' . $photo->file_name) : ($photo->thumbnail_path ? base_url('uploads/thumbnails/' . $photo->thumbnail_path) : base_url('assets/site/images/no-image-placeholder.png')) ?>)">
             <div class="img_header ">
               <?php if ($photo->is_image == 0) { ?>
                 <img class="play_button" src="<?= base_url() ?>assets/site/images/Play button.svg" />
@@ -97,14 +97,14 @@
       $count++;
     } ?>
     <?php if (isset($links)) { ?>
-    <div class="clearfix filters-container">
-      <div class="text-right">
-        <div class="pagination-container">
-          <?php echo $links; ?>
+      <div class="clearfix filters-container">
+        <div class="text-right">
+          <div class="pagination-container">
+            <?php echo $links; ?>
+          </div>
         </div>
       </div>
-    </div>
-  <?php } ?>
+    <?php } ?>
   </div>
 </div>
 <script>
@@ -130,6 +130,19 @@
     });
 
     $("[data-fancybox]").fancybox({
+      beforeShow: function(e) {
+        let photoId = $(this).find("img").attr("alt");
+        debugger
+        $.ajax({
+          async: true,
+          crossDomain: true,
+          url: "<?= base_url('/welcome/updatePagination?id='); ?>" + photoId,
+          type: 'GET',
+          success: function(res) {
+            console.log(res)
+          }
+        });
+      },
       loop: true,
       buttons: [
         "zoom",
