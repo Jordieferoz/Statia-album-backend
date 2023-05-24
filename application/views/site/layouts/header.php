@@ -15,7 +15,7 @@
   <div style="min-height:100vh; display:flex; flex-direction:column; 
             justify-content:space-between;">
     <header class="header-top-fixed one-page-nav">
-      <div class="container">
+      <div class="container m-0 mx-5">
         <div class="logo">
           <a class="navbar-brand" href="<?= base_url() ?>">
             <img class="logo" alt="logo" src="<?= base_url() ?>assets/site/images/logo.png">

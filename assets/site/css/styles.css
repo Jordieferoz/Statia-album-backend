@@ -177,6 +177,8 @@ img {
 .header-top-fixed .menu-wrapper {
   display: flex;
   align-items: center;
+  position: absolute;
+  right: 10vw;
 }
 
 .header-top-fixed .main-menu {
@@ -719,15 +721,40 @@ body.sidebar-menu-open .sidebar-menu {
   min-height: calc(100vh - 173px);
   height: calc(100vh - 173px);
 }
-.form_box{
+.form_box {
   width: 28vw;
   height: 85%;
   margin-top: 30px;
   background: rgb(211,215,215);
-  background: linear-gradient(0deg, rgba(211,215,215,0.7120098039215687) 0%, rgba(255,253,253,1) 100%); 
+  background: linear-gradient(0deg, rgb(78 78 78 / 71%) 0%, rgba(255,253,253,1) 100%);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  
 }
+
+textarea, input {
+  opacity: 0.6;
+}
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  opacity: 1;
+  border-color: transparent;
+  box-shadow: 0 1px 1px transparent inset, 0 0 8px transparent;
+  outline: 0 none;
+}
+
 .hello_head{
   color: #676767;
   font-size: 60px;
