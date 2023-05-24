@@ -11,7 +11,7 @@ class Welcome extends CI_Controller
 
 		if (!$this->session->userdata('user_key')) {
 
-			$this->session->set_flashdata('warning', "Please login to continue.");
+			// $this->session->set_flashdata('warning', "Please login to continue.");
 
 			redirect('/account/login');
 		} else if ($this->session->userdata('expiry_timestamp') < time()) {

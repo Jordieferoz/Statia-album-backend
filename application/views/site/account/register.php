@@ -10,11 +10,11 @@
                 <div class="form_box shadow-lg p-4">
 
                     <form class="form-inline" action="<?php echo site_url('account/registerer'); ?>" method="post" role="form">
-                        <p class="hello_head mb-3">Register!</p>
-                        <p class="text-center hello_head_sm mb-2">Enter details to create account</p>
+                        <p class="hello_head mb-3">Get Started!</p>
+                        <p class="text-center hello_head_sm mb-2">Please provide the following information <br />to create your account:</p>
                         <div class="form-outline mb-3">
                             <!-- <label class="info-title" for="name">Name <span>*</span></label> -->
-                            <input type="name" class="form-control unicase-form-control p-3 text-input" id="name" name="name" value="<?php echo set_value('name'); ?>" placeholder="Your Name">
+                            <input type="text" class="form-control unicase-form-control p-3 text-input" id="name" name="name" value="<?php echo set_value('name'); ?>" placeholder="Your Name">
                             <span class="text-danger"><?php echo form_error('name'); ?></span>
                         </div>
 
@@ -37,7 +37,7 @@
                             <button type="submit" class="btn-upper btn btn-warning text-light btn-lg btn-block w-100 mt-3">Register</button>
                         </div>
                         <!-- <button type="submit" class="btn-upper btn btn-warning mt-3">Register</button> -->
-                        <p class="text-center">Already have an account?<br /><a href="<?php echo site_url('account/login'); ?>" class="link-warning underline">Login?</a>
+                        <p class="text-center text-white">Already have an account? <a href="<?php echo site_url('account/login'); ?>" class="link-warning underline">Login?</a>
                         </p>
                         
                     </form>

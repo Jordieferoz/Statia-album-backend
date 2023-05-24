@@ -6,7 +6,7 @@
                 <p class="footer_text text-muted p-5"> &copy; 2023 Statia-tourism. All Right Reserved.</p>
             </div>
             <div class="col-md-6 col-sm-12 login_part ">
-                <div class="row  d-flex justify-content-center" >
+                <div class="row d-flex justify-content-center" >
                 <div class="form_box shadow-lg p-4">
                     <form class="register-form" action="<?php echo site_url('account/authenticate'); ?>" method="post" role="form">
                         <p class="hello_head mb-3">Hello!</p>
@@ -24,7 +24,7 @@
                             <button type="submit" class="btn btn-warning text-light btn-lg btn-block w-100">Login</button>
                         </div>
                         <p class="text-center">
-                            <a href="<?php echo site_url('account/recover'); ?>" class="underline text-secondary">Forgot your Password?</a>
+                            <a href="<?php echo site_url('account/recover'); ?>" class="underline text-secondary text-white">Forgot your Password?</a>
                         </p>
                     </form>
                 </div>
