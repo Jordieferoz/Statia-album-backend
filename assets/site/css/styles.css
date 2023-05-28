@@ -650,6 +650,10 @@ body.sidebar-menu-open .sidebar-menu {
   .card-img-top {
     height: 30vw;
   }
+
+  .form_box {
+    width: 75vw !important;
+  }
 	/* .gallery a {
 		width: 50%;
 	} */
@@ -663,6 +667,10 @@ body.sidebar-menu-open .sidebar-menu {
 }
 
 @media(max-width: 767px) {
+
+  .hello_head {
+    font-size: 40px !important;
+  }
 
   .categories-list::-webkit-scrollbar {
     display: none;
