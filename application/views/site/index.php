@@ -41,12 +41,13 @@
   </div>
   <div class="col-md-9 col-sm-12 photos-and-categories">
     <h3 class="section-title heading5"><?= !($this->uri->segment(3)) ? 'All Photos' : $CATEGORIES[array_search($this->uri->segment(3), array_column($CATEGORIES, 'id'), 'id')]->category ?></h3>
+    <div class="row mt-3">
     <?php if (!($this->uri->segment(3))) {
       $count = 0;
       foreach ($CATEGORIES as $category) {
     ?>
-        <?= $count % 3 === 0 ? '<div class="row">' : '' ?>
-        <div class="col-md-4 sol-sm-6 col-xs-12 p-2" style="cursor: pointer;" onclick="window.location.assign('<?= base_url('welcome/index/' . $category->id) ?>')">
+        <!-- <?= $count % 3 === 0 ? '<div class="row mt-3">' : '' ?> -->
+        <div class="col-md-4 col-6 mt-3" style="cursor: pointer;" onclick="window.location.assign('<?= base_url('welcome/index/' . $category->id) ?>')">
           <div class="card category-card shadow">
             <img class="card-img-top p-2" src="<?= !$category->file_name ? base_url('assets/site/images/no-img.jpg') : base_url('uploads/categories/' . $category->file_name) ?>" alt="Category image cap">
             <div class="card-body">
@@ -59,12 +60,14 @@
           </div>
         </div>
     <?php
-        if ($count % 3 == 2) {
-          echo '</div>';
-        }
+        // if ($count % 3 == 2) {
+        //   echo '</div>';
+        // }
         $count++;
       }
     } ?>
+    </div>
+    <div class="row">
     <?php
     if (count($PHOTOS) == 0 && ($this->uri->segment(3))) {
       echo '<center>No photos to show</center>';
@@ -72,8 +75,8 @@
     $count = 0;
     foreach ($PHOTOS as $photo) {
     ?>
-      <?= $count % 3 === 0 ? '<div class="row">' : '' ?>
-      <div class="col-md-4 sol-sm-6 col-xs-12 py-2">
+      <!-- <?= $count % 3 === 0 ? '<div class="row">' : '' ?> -->
+      <div class="col-md-4 col-6 mt-3">
         <div class="mediaCard gallery clear">
           <div class="bg" alt="<?= $photo->id ?>" style="background-image: url(<?= $photo->is_image == 1 ? base_url('uploads/photos/' . $photo->file_name) : ($photo->thumbnail_path ? base_url('uploads/thumbnails/' . $photo->thumbnail_path) : base_url('assets/site/images/no-image-placeholder.png')) ?>)">
             <div class="img_header ">
@@ -92,10 +95,11 @@
       </div>
     <?php
       if ($count % 3 == 2) {
-        echo '</div>';
+        // echo '</div>';
       }
       $count++;
     } ?>
+    </div>
     <?php if (isset($links)) { ?>
       <div class="clearfix filters-container">
         <div class="text-right">

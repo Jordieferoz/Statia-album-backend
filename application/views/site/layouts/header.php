@@ -20,9 +20,9 @@
           <a class="navbar-brand" href="<?= base_url() ?>">
             <img class="logo" alt="logo" src="<?= base_url() ?>assets/site/images/logo.png">
           </a>
-          <a class="hamburger-icon" id="open-sidebar">
+          <!-- <a class="hamburger-icon" id="open-sidebar">
             <img src="<?= base_url() ?>assets/site/images/hamburger_icon.svg" />
-          </a>
+          </a> -->
         </div>
         <div class="menu-wrapper">
           <ul class="main-menu">
@@ -31,11 +31,11 @@
                 Photos
               </a>
             </li>
-            <li>
+            <!-- <li>
               <a class="heading5" href="#">
                 Albums
               </a>
-            </li>
+            </li> -->
             <?php if ($this->session->userdata('user_key')) { ?>
             <li>
               <a class="heading5" href="<?= base_url('welcome/logout') ?>">
@@ -43,11 +43,11 @@
               </a>
             </li>
             <?php } ?>
-            <li>
+            <!-- <li>
               <a id="open-sidebar">
                 <img src="<?= base_url() ?>assets/site/images/hamburger_icon.svg" />
               </a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>
