@@ -24,11 +24,11 @@
     <div class="container">
         <div class="full-width-div">
             <div class="row fill">
-                <div class="col-md-6 col-sm-12 d-none d-md-flex d-flex justify-content-start login-left-image">
+                <div class="col-lg-6 col-sm-12 d-none d-lg-flex d-flex justify-content-start login-left-image ">
                     <img src="<?= base_url('/assets/site/images/hero-title.svg') ?>" draggable="false" alt="img" class="h-50 mt-5" />
                     <p class="footer_text text-muted p-5"> &copy; 2023 Statia-tourism. All Right Reserved.</p>
                 </div>
-                <div class="col-md-6 col-sm-12 login_part ">
+                <div class="col-lg-6 col-sm-12 login_part ">
                 <div class="row  d-flex justify-content-center" >
                     <div class="form_box shadow-lg p-4">
                         <form class="register-form" action="<?php echo site_url('account/otp'); ?>" method="post" role="form">
