@@ -51,10 +51,9 @@
           <div class="card category-card shadow">
             <img class="card-img-top p-2" src="<?= !$category->file_name ? base_url('assets/site/images/no-img.jpg') : base_url('uploads/categories/' . $category->file_name) ?>" alt="Category image cap">
             <div class="card-body">
-              <p class="card-text">
-                <center>
-                  <p><?= $category->category ?></p>
-                </center>
+              <p class="card-text category-text">
+                <?= $category->category ?>
+                <!-- <?= strlen($category->category) > 20 ? mb_substr(strip_tags($category->category), 0, 20) . '...' : strip_tags($category->category); ?> -->
               </p>
             </div>
           </div>

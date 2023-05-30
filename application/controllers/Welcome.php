@@ -39,7 +39,7 @@ class Welcome extends CI_Controller
 			$config = array();
 			$config["base_url"] = base_url() . "welcome/index/" . $category_id;
 			$config["total_rows"] = $this->Crud->Count('photos', " `status` = '1' AND `category_id` = '$category_id'");
-			$config["per_page"] = 9;
+			$config["per_page"] = 12;
 			$config["uri_segment"] = 4;
 			$config['full_tag_open']    = "<ul class='list-inline list-unstyled'>";
 			$config['full_tag_close']   = "</ul>";
@@ -58,7 +58,7 @@ class Welcome extends CI_Controller
 			$this->pagination->initialize($config);
 			$page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
 
-			$data['PHOTOS'] = $this->Crud->Read('photos', " `status` = '1' AND `category_id` = '$category_id' ORDER BY id DESC LIMIT $page, 9");
+			$data['PHOTOS'] = $this->Crud->Read('photos', " `status` = '1' AND `category_id` = '$category_id' ORDER BY id DESC LIMIT $page, 12");
 			$data["links"] = $this->pagination->create_links();
 		}
 		$this->load->view('site/layouts/header');

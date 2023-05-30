@@ -302,6 +302,10 @@ body.sidebar-menu-open .sidebar-menu {
     width: 50%;
   }
 
+  main {
+    padding-top: 73px;
+  }
+
   .header-top-fixed .logo {
     display: flex;
     align-items: center;
@@ -646,9 +650,23 @@ body.sidebar-menu-open .sidebar-menu {
     transform: scale(1.1,1.1);
 } */
 
+.category-text {
+  text-overflow: ellipsis;
+  display: block;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 13px;
+  text-align: center;
+}
+
 @media(max-width: 991px) {
   .card-img-top {
     height: 30vw;
+  }
+
+  .category-single.active {
+    background-color: transparent;
   }
 
   .form_box {
@@ -670,6 +688,10 @@ body.sidebar-menu-open .sidebar-menu {
 
   .hello_head {
     font-size: 40px !important;
+  }
+
+  .category-text {
+    font-size: 11px;
   }
 
   .categories-list::-webkit-scrollbar {
