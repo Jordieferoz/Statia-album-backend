@@ -40,8 +40,8 @@
     </ul>
   </div>
   <div class="col-md-9 col-sm-12 photos-and-categories">
-    <h3 class="section-title heading5"><?= !($this->uri->segment(3)) ? 'All Photos' : $CATEGORIES[array_search($this->uri->segment(3), array_column($CATEGORIES, 'id'), 'id')]->category ?></h3>
-    <div class="row mt-3">
+    <h3 class="section-title heading5 categories-list-item"><?= !($this->uri->segment(3)) ? 'All Photos' : $CATEGORIES[array_search($this->uri->segment(3), array_column($CATEGORIES, 'id'), 'id')]->category ?></h3>
+    <div class="row mt-3 categories-image-list">
     <?php if (!($this->uri->segment(3))) {
       $count = 0;
       foreach ($CATEGORIES as $category) {
