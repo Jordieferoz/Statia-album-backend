@@ -190,7 +190,7 @@ class Categorization extends CI_Controller
 				if ($this->Crud->Update('categories', $data, " `id` = '$categoryId'")) {
 					// update product table
 					$newCategory = $this->input->post('editCategoryText');
-					$this->Crud->Update('products', array(
+					$this->Crud->Update('photos', array(
 						'categories' => $newCategory
 					), " `categories` = '$oldCategory'");
 					$this->session->set_flashdata('success', "Changes saved");
