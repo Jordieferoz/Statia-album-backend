@@ -687,17 +687,40 @@ body.sidebar-menu-open .sidebar-menu {
 
 }
 
+@media(max-width: 1024px) {
+  .login_part{
+    height: calc(100vh - 73px);
+    background-image: none !important; 
+    width: 100vw;
+  }
+
+  .login-left-image {
+    display: none !important;
+  }
+  .form_box {
+    width: 75vw !important;
+  }
+  .errox_msg_box{
+    width: 75vw !important;
+  }
+}
+
 @media(max-width: 767px) {
 
   .hello_head {
     font-size: 40px !important;
   }
 
+  .footer-paragraph {
+    text-align: center !important;
+    font-size: 12px;
+  }
+
   .categories-list {
     border-top: 1px solid #eee;
     border-bottom: 1px solid #eee;
     list-style: none;
-    padding: 0px 10px;
+    padding: 5px 10px 0px 10px;
     margin-top: 40px !important;
     text-align: left;
     margin-top: 10px;
@@ -789,7 +812,7 @@ body.sidebar-menu-open .sidebar-menu {
 }
 .login_part{ 
   /* height: 75vh; */
-  background-image: url(../images/bg.jpeg) !important;
+  background-image: url(../images/bg.jpeg);
   background-size: contain;
   display: block;
   /* width: 50%; */
