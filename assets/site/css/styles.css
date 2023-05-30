@@ -672,6 +672,9 @@ body.sidebar-menu-open .sidebar-menu {
   .form_box {
     width: 75vw !important;
   }
+  .errox_msg_box{
+    width: 75vw !important;
+  }
 	/* .gallery a {
 		width: 50%;
 	} */
@@ -688,6 +691,16 @@ body.sidebar-menu-open .sidebar-menu {
 
   .hello_head {
     font-size: 40px !important;
+  }
+
+  .categories-list {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    list-style: none;
+    padding: 0px 10px;
+    margin-top: 40px !important;
+    text-align: left;
+    margin-top: 10px;
   }
 
   .category-text {
@@ -776,7 +789,7 @@ body.sidebar-menu-open .sidebar-menu {
 }
 .login_part{ 
   /* height: 75vh; */
-  background-image: url(../images/bg.jpeg) !important; 
+  background-image: url(../images/bg.jpeg) !important;
   background-size: contain;
   display: block;
   /* width: 50%; */
@@ -894,6 +907,31 @@ input[type="color"]:focus,
   padding: 0;
   margin-top: 5px;
 }
+
+@media only screen and (max-width: 990px) {
+  .login_part{ 
+    height: calc(100vh - 73px);
+    background-image: none !important; 
+  }
+  .form_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hello_head_md {
+    font-size: 13px;
+  }
+  .categories-list-item {
+    display: none;
+  }
+  .all-photos-list {
+    font-size: 16px;
+  }
+  .categories-image-list {
+    margin-top: -5px !important;
+  }
+}
+
 @media only screen and (max-width: 767px) {
   .login_part {
     width: 100%;
