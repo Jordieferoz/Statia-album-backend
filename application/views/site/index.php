@@ -30,7 +30,7 @@
       </li>
       <?php foreach ($CATEGORIES as $category) { ?>
         <li>
-          <a href="<?= base_url() . 'welcome/index/' . $category->id ?>">
+          <a href="<?= base_url() . 'welcome/index/' . $category->id . '?c=' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $category->category)) ?>">
             <p class="category-single <?= ($this->uri->segment(3)) && $this->uri->segment(3) === $category->id ? 'active' : '' ?>">
               <?= $category->category ?>
             </p>
@@ -47,7 +47,7 @@
       foreach ($CATEGORIES as $category) {
     ?>
         <!-- <?= $count % 3 === 0 ? '<div class="row mt-3">' : '' ?> -->
-        <div class="col-md-4 col-6 mt-3" style="cursor: pointer;" onclick="window.location.assign('<?= base_url('welcome/index/' . $category->id) ?>')">
+        <div class="col-md-4 col-6 mt-3" style="cursor: pointer;" onclick="window.location.assign('<?= base_url('welcome/index/' . $category->id . '?c=' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $category->category))) ?>')">
           <div class="card category-card shadow">
             <img class="card-img-top p-2" src="<?= !$category->file_name ? base_url('assets/site/images/no-img.jpg') : base_url('uploads/categories/' . $category->file_name) ?>" alt="Category image cap">
             <div class="card-body">

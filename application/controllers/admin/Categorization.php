@@ -61,7 +61,7 @@ class Categorization extends CI_Controller
 
 				$config['upload_path'] = FCPATH . 'uploads/categories/';
 
-				$config['allowed_types'] = 'gif|jpg|png';
+				$config['allowed_types'] = 'gif|jpg|png|heic';
 
 				// $config['max_size'] = 2000;
 
@@ -150,7 +150,7 @@ class Categorization extends CI_Controller
 
 					$config['upload_path'] = FCPATH . 'uploads/categories/';
 
-					$config['allowed_types'] = 'gif|jpg|png';
+					$config['allowed_types'] = 'gif|jpg|png|heic';
 
 					$config['encrypt_name'] = TRUE;
 
