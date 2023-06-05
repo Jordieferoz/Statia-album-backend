@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Statia Album</title>
+  <link rel="icon" type="image/x-icon" href="<?= base_url() ?>assets/site/images/favicon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha256-wLz3iY/cO4e6vKZ4zRmo4+9XDpMcgKOvv/zEU3OMlRo=" crossorigin="anonymous">
   <link rel="stylesheet" href="<?= base_url() ?>assets/site/css/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css">
@@ -49,6 +50,9 @@
 </script>
 
 <body>
+  <div id="loading">
+    <img id="loading-image" src="<?= base_url() ?>assets/site/images/loader.gif" alt="Loading..." />
+  </div>
   <div style="min-height:100vh; display:flex; flex-direction:column; 
             justify-content:space-between;">
     <header class="header-top-fixed one-page-nav">
@@ -64,12 +68,12 @@
         <div class="menu-wrapper">
           <ul class="main-menu">
             <li>
-              <a class="heading5 <?php echo $this->uri->segment(2) !== 'videos' ? 'active' : '' ?>" href="<?= base_url('/') ?>">
+              <a class="heading5 <?php echo $this->uri->segment(2) !== 'videos' ? 'active' : '' ?>" href="<?= base_url('/welcome/index') ?><?= isset($_GET['c']) ? '/' . $this->uri->segment(3) . '?c=' . $_GET['c'] : '' ?>">
                 Photos
               </a>
             </li>
             <li>
-              <a class="heading5 <?php echo $this->uri->segment(2) === 'videos' ? 'active' : '' ?>" href="<?= base_url('/welcome/videos') ?>">
+              <a class="heading5 <?php echo $this->uri->segment(2) === 'videos' ? 'active' : '' ?>" href="<?= base_url('/welcome/videos') ?><?= isset($_GET['c']) ? '/' . $this->uri->segment(3) . '?c=' . $_GET['c'] : '' ?>">
                 Videos
               </a>
             </li>

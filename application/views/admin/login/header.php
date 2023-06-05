@@ -8,8 +8,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="<?= base_url() ?>assets/site/images/favicon.png">
 
     <!-- Lightgallery CSS -->
     <link href="<?php echo base_url() . 'assets/'; ?>dist/css/lightgallery.css" rel="stylesheet" type="text/css">
