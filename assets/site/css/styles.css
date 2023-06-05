@@ -293,13 +293,17 @@ body.sidebar-menu-open .sidebar-menu {
 }
 
 .hamburger-icon {
+  height: 60px;
+  width: 60px;
+  padding-right: 25px;
+  padding-top: 15px;
   display: none;
 }
 
 @media only screen and (max-width: 767px) {
   .header-top-fixed .menu-wrapper {
-    /* display: none; */
-    width: 50%;
+    display: none;
+    /* width: 50%; */
   }
 
   main {

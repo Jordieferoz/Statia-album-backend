@@ -24,13 +24,13 @@
   <div class="col-md-3 col-sm-12">
     <ul class="categories-list">
       <li>
-        <a href="<?= base_url() ?>">
-          <p class="category-single all-photos-list <?= !($this->uri->segment(3)) ? 'active' : '' ?>">All Photos</p>
+        <a href="<?= base_url('/welcome/videos') ?>">
+          <p class="category-single all-photos-list <?= !($this->uri->segment(3)) ? 'active' : '' ?>">All Videos</p>
         </a>
       </li>
       <?php foreach ($CATEGORIES as $category) { ?>
         <li>
-          <a href="<?= base_url() . 'welcome/index/' . $category->id . '?c=' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $category->category)) ?>">
+          <a href="<?= base_url() . 'welcome/videos/' . $category->id . '?c=' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $category->category)) ?>">
             <p class="category-single <?= ($this->uri->segment(3)) && $this->uri->segment(3) === $category->id ? 'active' : '' ?>">
               <?= $category->category ?>
             </p>
@@ -40,14 +40,14 @@
     </ul>
   </div>
   <div class="col-md-9 col-sm-12 photos-and-categories">
-    <h3 class="section-title heading5 categories-list-item"><?= !($this->uri->segment(3)) ? 'All Photos' : $CATEGORIES[array_search($this->uri->segment(3), array_column($CATEGORIES, 'id'), 'id')]->category ?></h3>
+    <h3 class="section-title heading5 categories-list-item"><?= !($this->uri->segment(3)) ? 'All Videos' : $CATEGORIES[array_search($this->uri->segment(3), array_column($CATEGORIES, 'id'), 'id')]->category ?></h3>
     <div class="row mt-3 categories-image-list">
     <?php if (!($this->uri->segment(3))) {
       $count = 0;
       foreach ($CATEGORIES as $category) {
     ?>
         <!-- <?= $count % 3 === 0 ? '<div class="row mt-3">' : '' ?> -->
-        <div class="col-md-4 col-6 mt-3" style="cursor: pointer;" onclick="window.location.assign('<?= base_url('welcome/index/' . $category->id . '?c=' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $category->category))) ?>')">
+        <div class="col-md-4 col-6 mt-3" style="cursor: pointer;" onclick="window.location.assign('<?= base_url('welcome/videos/' . $category->id . '?c=' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $category->category))) ?>')">
           <div class="card category-card shadow">
             <img class="card-img-top p-2" src="<?= !$category->file_name ? base_url('assets/site/images/no-img.jpg') : base_url('uploads/categories/' . $category->file_name) ?>" alt="Category image cap">
             <div class="card-body">
@@ -68,25 +68,25 @@
     </div>
     <div class="row">
     <?php
-    if (count($PHOTOS) == 0 && ($this->uri->segment(3))) {
-      echo '<center>No photos to show</center>';
+    if (count($VIDEOS) == 0 && ($this->uri->segment(3))) {
+      echo '<center>No videos to show</center>';
     }
     $count = 0;
-    foreach ($PHOTOS as $photo) {
+    foreach ($VIDEOS as $video) {
     ?>
       <!-- <?= $count % 3 === 0 ? '<div class="row">' : '' ?> -->
       <div class="col-md-4 col-6 mt-3">
         <div class="mediaCard gallery clear">
-          <div class="bg" alt="<?= $photo->id ?>" style="background-image: url(<?= $photo->is_image == 1 ? base_url('uploads/photos/' . $photo->file_name) : ($photo->thumbnail_path ? base_url('uploads/thumbnails/' . $photo->thumbnail_path) : base_url('assets/site/images/no-image-placeholder.png')) ?>)">
+          <div class="bg" alt="<?= $video->id ?>" style="background-image: url(<?= $video->is_image == 1 ? base_url('uploads/photos/' . $video->file_name) : ($video->thumbnail_path ? base_url('uploads/thumbnails/' . $video->thumbnail_path) : base_url('assets/site/images/no-image-placeholder.png')) ?>)">
             <div class="img_header ">
-              <?php if ($photo->is_image == 0) { ?>
+              <?php if ($video->is_image == 0) { ?>
                 <img class="play_button" src="<?= base_url() ?>assets/site/images/Play button.svg" />
               <?php } ?>
             </div>
             <div class="media-content">
-              <h4 class="heading2 decrease-line-height"><?= $photo->title ? $photo->title : 'No title' ?></h4>
-              <h5 class="sub-heading" title="<?= strip_tags($photo->description) ?>"><?= strlen($photo->description) > 20 ? mb_substr(strip_tags($photo->description), 0, 20) . '...' : strip_tags($photo->description); ?></h5>
-              <p class="supported-text media-views"><span id="image-<?= $photo->id ?>"><?= $photo->total_views == 0 ? 'No' : $photo->total_views ?></span> views</p>
+              <h4 class="heading2 decrease-line-height"><?= $video->title ? $video->title : 'No title' ?></h4>
+              <h5 class="sub-heading" title="<?= strip_tags($video->description) ?>"><?= strlen($video->description) > 20 ? mb_substr(strip_tags($video->description), 0, 20) . '...' : strip_tags($video->description); ?></h5>
+              <p class="supported-text media-views"><span id="image-<?= $video->id ?>"><?= $video->total_views == 0 ? 'No' : $video->total_views ?></span> views</p>
             </div>
             <div class="media-card-overlay"></div>
           </div>
@@ -170,4 +170,37 @@
     });
 
   });
+</script>
+<script>
+  function hasClass(ele, cls) {
+    return !!ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+  }
+
+  function addClass(ele, cls) {
+    if (!hasClass(ele, cls)) ele.className += " " + cls;
+  }
+
+  function removeClass(ele, cls) {
+    if (hasClass(ele, cls)) {
+      var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+      ele.className = ele.className.replace(reg, ' ');
+    }
+  }
+
+  function init() {
+    document.getElementById("open-sidebar").addEventListener("click", toggleMenu);
+    document.getElementById("sidebar-overlay").addEventListener("click", toggleMenu);
+    document.getElementById("sidebar-close-icon").addEventListener("click", toggleMenu);
+  }
+
+  function toggleMenu() {
+    var ele = document.getElementsByTagName('body')[0];
+
+    if (!hasClass(ele, "sidebar-menu-open")) {
+      addClass(ele, "sidebar-menu-open");
+      s
+    } else {
+      removeClass(ele, "sidebar-menu-open");
+    }
+  }
 </script>

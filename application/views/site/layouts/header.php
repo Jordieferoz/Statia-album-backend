@@ -10,6 +10,43 @@
   <link rel="stylesheet" href="<?= base_url() ?>assets/site/css/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css">
 </head>
+<script>
+  function hasClass(ele, cls) {
+    return !!ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
+  }
+
+  function addClass(ele, cls) {
+    if (!hasClass(ele, cls)) ele.className += " " + cls;
+  }
+
+  function removeClass(ele, cls) {
+    if (hasClass(ele, cls)) {
+      var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
+      ele.className = ele.className.replace(reg, ' ');
+    }
+  }
+
+  function init() {
+    document.getElementById("open-sidebar").addEventListener("click", toggleMenu);
+    document.getElementById("sidebar-overlay").addEventListener("click", toggleMenu);
+    // document.getElementById("sidebar-close-icon").addEventListener("click", toggleMenu);
+  }
+
+  function toggleMenu() {
+    var ele = document.getElementsByTagName('body')[0];
+
+    if (!hasClass(ele, "sidebar-menu-open")) {
+      addClass(ele, "sidebar-menu-open");
+    } else {
+      removeClass(ele, "sidebar-menu-open");
+    }
+  }
+  document.addEventListener('readystatechange', function() {
+    if (document.readyState === "complete") {
+      init();
+    }
+  });
+</script>
 
 <body>
   <div style="min-height:100vh; display:flex; flex-direction:column; 
@@ -20,34 +57,29 @@
           <a class="navbar-brand" href="<?= base_url() ?>">
             <img class="logo" alt="logo" src="<?= base_url() ?>assets/site/images/logo.png">
           </a>
-          <!-- <a class="hamburger-icon" id="open-sidebar">
+          <a class="hamburger-icon" id="open-sidebar">
             <img src="<?= base_url() ?>assets/site/images/hamburger_icon.svg" />
-          </a> -->
+          </a>
         </div>
         <div class="menu-wrapper">
           <ul class="main-menu">
             <li>
-              <a class="heading5 active" href="<?= base_url('/') ?>">
+              <a class="heading5 <?php echo $this->uri->segment(2) !== 'videos' ? 'active' : '' ?>" href="<?= base_url('/') ?>">
                 Photos
               </a>
             </li>
-            <!-- <li>
-              <a class="heading5" href="#">
-                Albums
-              </a>
-            </li> -->
-            <?php if ($this->session->userdata('user_key')) { ?>
             <li>
-              <a class="heading5" href="<?= base_url('welcome/logout') ?>">
-                Logout
+              <a class="heading5 <?php echo $this->uri->segment(2) === 'videos' ? 'active' : '' ?>" href="<?= base_url('/welcome/videos') ?>">
+                Videos
               </a>
             </li>
+            <?php if ($this->session->userdata('user_key')) { ?>
+              <li>
+                <a class="heading5" href="<?= base_url('welcome/logout') ?>">
+                  Logout
+                </a>
+              </li>
             <?php } ?>
-            <!-- <li>
-              <a id="open-sidebar">
-                <img src="<?= base_url() ?>assets/site/images/hamburger_icon.svg" />
-              </a>
-            </li> -->
           </ul>
         </div>
       </div>
@@ -62,15 +94,22 @@
                 <div class="sidebar-header-content">
                   <ul class="sidebar-menu-items">
                     <li>
-                      <a class="heading5 active" href="#">
+                      <a class="heading5 <?php echo $this->uri->segment(2) !== 'videos' ? 'active' : '' ?>" href="<?= base_url('/') ?>">
                         Photos
                       </a>
                     </li>
                     <li>
-                      <a class="heading5" href="#">
-                        Albums
+                      <a class="heading5 <?php echo $this->uri->segment(2) === 'videos' ? 'active' : '' ?>" href="<?= base_url('/welcome/videos') ?>">
+                        Videos
                       </a>
                     </li>
+                    <?php if ($this->session->userdata('user_key')) { ?>
+                      <li>
+                        <a class="heading5" href="<?= base_url('welcome/logout') ?>">
+                          Logout
+                        </a>
+                      </li>
+                    <?php } ?>
                   </ul>
                 </div>
               </div>
