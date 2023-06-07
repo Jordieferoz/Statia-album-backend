@@ -938,7 +938,7 @@ input[type="color"]:focus,
 .page-selector {
   display: none !important;
   padding: 4px;
-  margin-top: 8px;
+  margin-top: 1px;
 }
 
 @media only screen and (max-width: 990px) {
@@ -975,7 +975,7 @@ input[type="color"]:focus,
     display: none;
   }
   .categories-list-item {
-    margin-top: 40px !important;
+    margin-top: 70px !important;
     display: block !important;
     border-top: 1px solid grey;
     border-bottom: 1px solid grey;
@@ -1061,4 +1061,6 @@ input[type="color"]:focus,
   display: flex;
   align-items: center;
   justify-content: space-around;
+  height: 100px;
+  width: 100px;
 }
