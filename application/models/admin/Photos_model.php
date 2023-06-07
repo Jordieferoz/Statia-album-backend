@@ -6,7 +6,7 @@ class Photos_model extends CI_Model {
 
     public function getCategories() {
 
-        $this->db->where('is_active = 1');
+        $this->db->where('is_active = 1')->order_by('category', 'asc');
 
         $data = $this->db->get('categories');
 

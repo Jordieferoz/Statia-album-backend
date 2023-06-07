@@ -13,7 +13,7 @@
       <span style="color: red;" class="text-error"><?php echo form_error('category'); ?></span>
     </div>
     <div class="form-group">
-      <label for="inputClientCompany">Images (gif|jpg|png|jpeg)</label>
+      <label for="inputClientCompany">Images (gif|jpg|png|jpeg|heic)</label>
       <input type="file" name="coverImage[]" accept="images/*" multiple class="form-control" id="coverImage" required>
     </div>
 </div>

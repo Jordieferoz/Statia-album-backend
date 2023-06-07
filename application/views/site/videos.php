@@ -42,62 +42,62 @@
   <div class="col-md-9 col-sm-12 photos-and-categories">
     <h3 class="section-title heading5 categories-list-item"><?= !($this->uri->segment(3)) ? 'All Videos' : $CATEGORIES[array_search($this->uri->segment(3), array_column($CATEGORIES, 'id'), 'id')]->category ?></h3>
     <div class="row mt-3 categories-image-list">
-    <?php if (!($this->uri->segment(3))) {
-      $count = 0;
-      foreach ($CATEGORIES as $category) {
-    ?>
-        <!-- <?= $count % 3 === 0 ? '<div class="row mt-3">' : '' ?> -->
-        <div class="col-md-4 col-6 mt-3" style="cursor: pointer;" onclick="window.location.assign('<?= base_url('welcome/videos/' . $category->id . '?c=' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $category->category))) ?>')">
-          <div class="card category-card shadow">
-            <img class="card-img-top p-2" src="<?= !$category->file_name ? base_url('assets/site/images/no-img.jpg') : base_url('uploads/categories/' . $category->file_name) ?>" alt="Category image cap">
-            <div class="card-body">
-              <p class="card-text category-text">
-                <?= $category->category ?>
-                <!-- <?= strlen($category->category) > 20 ? mb_substr(strip_tags($category->category), 0, 20) . '...' : strip_tags($category->category); ?> -->
-              </p>
+      <?php if (!($this->uri->segment(3))) {
+        $count = 0;
+        foreach ($CATEGORIES as $category) {
+      ?>
+          <!-- <?= $count % 3 === 0 ? '<div class="row mt-3">' : '' ?> -->
+          <div class="col-md-4 col-6 mt-3" style="cursor: pointer;" onclick="window.location.assign('<?= base_url('welcome/videos/' . $category->id . '?c=' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $category->category))) ?>')">
+            <div class="card category-card shadow">
+              <img class="card-img-top p-2" src="<?= !$category->file_name ? base_url('assets/site/images/no-img.jpg') : base_url('uploads/categories/' . $category->file_name) ?>" alt="Category image cap">
+              <div class="card-body">
+                <p class="card-text category-text">
+                  <?= $category->category ?>
+                  <!-- <?= strlen($category->category) > 20 ? mb_substr(strip_tags($category->category), 0, 20) . '...' : strip_tags($category->category); ?> -->
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-    <?php
-        // if ($count % 3 == 2) {
-        //   echo '</div>';
-        // }
-        $count++;
-      }
-    } ?>
+      <?php
+          // if ($count % 3 == 2) {
+          //   echo '</div>';
+          // }
+          $count++;
+        }
+      } ?>
     </div>
     <div class="row">
-    <?php
-    if (count($VIDEOS) == 0 && ($this->uri->segment(3))) {
-      echo '<center>No videos to show</center>';
-    }
-    $count = 0;
-    foreach ($VIDEOS as $video) {
-    ?>
-      <!-- <?= $count % 3 === 0 ? '<div class="row">' : '' ?> -->
-      <div class="col-md-4 col-6 mt-3">
-        <div class="mediaCard gallery clear">
-          <div class="bg" alt="<?= $video->id ?>" style="background-image: url(<?= $video->is_image == 1 ? base_url('uploads/photos/' . $video->file_name) : ($video->thumbnail_path ? base_url('uploads/thumbnails/' . $video->thumbnail_path) : base_url('assets/site/images/no-image-placeholder.png')) ?>)">
-            <div class="img_header ">
-              <?php if ($video->is_image == 0) { ?>
-                <img class="play_button" src="<?= base_url() ?>assets/site/images/Play button.svg" />
-              <?php } ?>
+      <?php
+      if (count($VIDEOS) == 0 && ($this->uri->segment(3))) {
+        echo '<div class="no-content"><center>No videos to show</center></div>';
+      }
+      $count = 0;
+      foreach ($VIDEOS as $video) {
+      ?>
+        <!-- <?= $count % 3 === 0 ? '<div class="row">' : '' ?> -->
+        <div class="col-md-4 col-6 mt-3">
+          <div class="mediaCard gallery clear" onclick="playVideo('<?= base_url('uploads/videos/' . $video->file_name) ?>', '<?= $video->id ?>', '<?= $video->file_type ?>')">
+            <div class="bg" alt="<?= $video->id ?>" style="background-image: url(<?= $video->is_image == 1 ? base_url('uploads/photos/' . $video->file_name) : ($video->thumbnail_path ? base_url('uploads/thumbnails/' . $video->thumbnail_path) : base_url('assets/site/images/no-image-placeholder.png')) ?>)">
+              <div class="img_header ">
+                <?php if ($video->is_image == 0) { ?>
+                  <img class="play_button" src="<?= base_url() ?>assets/site/images/Play button.svg" />
+                <?php } ?>
+              </div>
+              <div class="media-content">
+                <h4 class="heading2 decrease-line-height"><?= $video->title ? $video->title : 'No title' ?></h4>
+                <h5 class="sub-heading" title="<?= strip_tags($video->description) ?>"><?= strlen($video->description) > 20 ? mb_substr(strip_tags($video->description), 0, 20) . '...' : strip_tags($video->description); ?></h5>
+                <p class="supported-text media-views"><span id="image-<?= $video->id ?>"><?= $video->total_views == 0 ? 'No' : $video->total_views ?></span> views</p>
+              </div>
+              <div class="media-card-overlay"></div>
             </div>
-            <div class="media-content">
-              <h4 class="heading2 decrease-line-height"><?= $video->title ? $video->title : 'No title' ?></h4>
-              <h5 class="sub-heading" title="<?= strip_tags($video->description) ?>"><?= strlen($video->description) > 20 ? mb_substr(strip_tags($video->description), 0, 20) . '...' : strip_tags($video->description); ?></h5>
-              <p class="supported-text media-views"><span id="image-<?= $video->id ?>"><?= $video->total_views == 0 ? 'No' : $video->total_views ?></span> views</p>
-            </div>
-            <div class="media-card-overlay"></div>
           </div>
         </div>
-      </div>
-    <?php
-      if ($count % 3 == 2) {
-        // echo '</div>';
-      }
-      $count++;
-    } ?>
+      <?php
+        if ($count % 3 == 2) {
+          // echo '</div>';
+        }
+        $count++;
+      } ?>
     </div>
     <?php if (isset($links)) { ?>
       <div class="clearfix filters-container">
@@ -110,6 +110,16 @@
     <?php } ?>
   </div>
 </div>
+
+<div class="modal fade" id="videoShowModal" tabindex="-1" role="dialog" aria-labelledby="videoShowModal" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered model-xl" style="max-width: 80%;" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <center><video id="videoElement" controls style="max-width: 100%;"></video></center>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
   function viewPage(id) {
     window.location.href = `<?= base_url('/photo') ?>?id=${id}`
@@ -117,7 +127,38 @@
 </script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js" crossorigin="anonymous"></script>
+<script>
+  function playVideo(link, id, ext) {
+    debugger
+    $.ajax({
+      async: true,
+      crossDomain: true,
+      url: "<?= base_url('/welcome/updatePagination?id='); ?>" + id,
+      type: 'GET',
+      success: function(res) {
+        console.log(res)
+        if (res == "true") {
+          let updatedValue = 0
+          let views = $(`#image-${photoId}`).text()
+          if (views === 'No') {
+            updatedValue = 1
+          } else {
+            updatedValue = Number(views) + 1
+            $(`#image-${photoId}`).html(updatedValue)
+          }
+        }
+        $('#videoShowModal').modal('show');
+        var video = document.getElementById('videoElement');
+        var source = document.createElement('source');
+        source.setAttribute('src', link);
+        source.setAttribute('type', ext);
+        video.appendChild(source);
+        video.play();
+      }
+    });
+  }
+</script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js" crossorigin="anonymous"></script>
 <script>
   $(document).ready(function() {
 
@@ -170,7 +211,7 @@
     });
 
   });
-</script>
+</script> -->
 <script>
   function hasClass(ele, cls) {
     return !!ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));

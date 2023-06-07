@@ -29,7 +29,7 @@
         </a>
       </li>
       <?php foreach ($CATEGORIES as $category) { ?>
-        <li>
+        <li id="category-<?= $category->id ?>">
           <a href="<?= base_url() . 'welcome/index/' . $category->id . '?c=' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $category->category)) ?>">
             <p class="category-single <?= ($this->uri->segment(3)) && $this->uri->segment(3) === $category->id ? 'active' : '' ?>">
               <?= $category->category ?>
@@ -69,7 +69,7 @@
     <div class="row">
     <?php
     if (count($PHOTOS) == 0 && ($this->uri->segment(3))) {
-      echo '<center>No photos to show</center>';
+      echo '<div class="no-content"><center>No photos to show</center></div>';
     }
     $count = 0;
     foreach ($PHOTOS as $photo) {

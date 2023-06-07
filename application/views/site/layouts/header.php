@@ -98,12 +98,12 @@
                 <div class="sidebar-header-content">
                   <ul class="sidebar-menu-items">
                     <li>
-                      <a class="heading5 <?php echo $this->uri->segment(2) !== 'videos' ? 'active' : '' ?>" href="<?= base_url('/') ?>">
+                      <a class="heading5 <?php echo $this->uri->segment(2) !== 'videos' ? 'active' : '' ?>" href="<?= base_url('/welcome/index') ?><?= isset($_GET['c']) ? '/' . $this->uri->segment(3) . '?c=' . $_GET['c'] : '' ?>">
                         Photos
                       </a>
                     </li>
                     <li>
-                      <a class="heading5 <?php echo $this->uri->segment(2) === 'videos' ? 'active' : '' ?>" href="<?= base_url('/welcome/videos') ?>">
+                      <a class="heading5 <?php echo $this->uri->segment(2) === 'videos' ? 'active' : '' ?>" href="<?= base_url('/welcome/videos') ?><?= isset($_GET['c']) ? '/' . $this->uri->segment(3) . '?c=' . $_GET['c'] : '' ?>">
                         Videos
                       </a>
                     </li>

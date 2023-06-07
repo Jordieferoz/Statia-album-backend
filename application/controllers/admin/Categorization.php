@@ -22,7 +22,7 @@ class Categorization extends CI_Controller
 	public function category()
 	{
 
-		$data['CATEGORIES'] = $this->Crud->Read('categories', " `is_active` = '1'");
+		$data['CATEGORIES'] = $this->Crud->Read('categories', " `is_active` = '1' ORDER BY category ASC");
 
 		$this->load->view('admin/layouts/header');
 		$this->load->view('admin/layouts/nav');
@@ -34,7 +34,7 @@ class Categorization extends CI_Controller
 	public function inactiveCategory()
 	{
 
-		$data['CATEGORIES'] = $this->Crud->Read('categories', " `is_active` = '0'");
+		$data['CATEGORIES'] = $this->Crud->Read('categories', " `is_active` = '0' ORDER BY category ASC");
 
 		$this->load->view('admin/layouts/header');
 		$this->load->view('admin/layouts/nav');
@@ -61,7 +61,7 @@ class Categorization extends CI_Controller
 
 				$config['upload_path'] = FCPATH . 'uploads/categories/';
 
-				$config['allowed_types'] = 'gif|jpg|png|heic';
+				$config['allowed_types'] = '*';//'gif|jpg|png|heic';
 
 				// $config['max_size'] = 2000;
 
@@ -150,7 +150,7 @@ class Categorization extends CI_Controller
 
 					$config['upload_path'] = FCPATH . 'uploads/categories/';
 
-					$config['allowed_types'] = 'gif|jpg|png|heic';
+					$config['allowed_types'] = '*';//'gif|jpg|png|heic';
 
 					$config['encrypt_name'] = TRUE;
 
@@ -189,10 +189,10 @@ class Categorization extends CI_Controller
 
 				if ($this->Crud->Update('categories', $data, " `id` = '$categoryId'")) {
 					// update product table
-					$newCategory = $this->input->post('editCategoryText');
-					$this->Crud->Update('photos', array(
-						'categories' => $newCategory
-					), " `categories` = '$oldCategory'");
+					// $newCategory = $this->input->post('editCategoryText');
+					// $this->Crud->Update('photos', array(
+					// 	'categories' => $newCategory
+					// ), " `categories` = '$oldCategory'");
 					$this->session->set_flashdata('success', "Changes saved");
 				} else {
 					$this->session->set_flashdata('danger', "Something went wrong");

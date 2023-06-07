@@ -23,7 +23,7 @@ class Videos extends CI_Controller {
 
 	 public function new() {
 
-		$categories = $this->Crud->Read('categories', " `is_active` = '1'");
+		$categories = $this->Crud->Read('categories', " `is_active` = '1' ORDER BY category ASC");
 
 		$data['CATEGORIES'] = null;
 
@@ -129,7 +129,7 @@ class Videos extends CI_Controller {
 
 			$config['upload_path'] = FCPATH.'uploads/videos/';
 
-			$config['allowed_types'] = 'mp4|wmv|mpeg|mov|mpg|heic';
+			$config['allowed_types'] = '*';//'mp4|wmv|mpeg|mov|mpg|heic';
 
 			// $config['max_size'] = 20480;
 
@@ -153,7 +153,7 @@ class Videos extends CI_Controller {
 
 				$config['upload_path'] = FCPATH.'uploads/thumbnails/';
 
-				$config['allowed_types'] = 'gif|jpg|png|jpeg|heic';
+				$config['allowed_types'] = '*';//'gif|jpg|png|jpeg|heic';
 
 				// $config['max_size'] = 2000;
 
@@ -344,7 +344,7 @@ class Videos extends CI_Controller {
 
 				$config['upload_path'] = FCPATH.'uploads/thumbnails/';
 
-				$config['allowed_types'] = 'gif|jpg|png|jpeg|heic';
+				$config['allowed_types'] = '*';//'gif|jpg|png|jpeg|heic';
 
 				// $config['max_size'] = 2000;
 
@@ -367,7 +367,7 @@ class Videos extends CI_Controller {
 
 				$config['upload_path'] = FCPATH.'uploads/videos/';
 
-				$config['allowed_types'] = 'mp4|wmv|mpeg|mov|mpg|heic';
+				$config['allowed_types'] = '*';//'mp4|wmv|mpeg|mov|mpg|heic';
 
 				// $config['max_size'] = 20480;
 
