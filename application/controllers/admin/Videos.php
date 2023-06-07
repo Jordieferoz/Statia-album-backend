@@ -262,7 +262,45 @@ class Videos extends CI_Controller {
 
 			if ($isUnpublished == true) {
 
-				$this->session->set_flashdata('success', 'Post unpublished!');
+				$this->session->set_flashdata('success', 'Video unpublished!');
+
+				redirect('admin/videos/published');
+
+			} else {
+
+				$this->session->set_flashdata('error', 'Something went wrong, please try again');
+
+				redirect('admin/videos/published');
+
+			}
+
+		} else {
+
+			$this->session->set_flashdata('error', 'Access denied');
+
+			redirect('admin/videos/published');
+
+		}
+
+	 }
+
+	 public function delete($id) {
+
+		$validator = $this->Photos_model->idValidator($id);
+
+		if ($validator == true) {
+
+			$status = [
+
+				'status' => 3
+
+			];
+
+			$isUnpublished = $this->Photos_model->unpublish($id, $status);
+
+			if ($isUnpublished == true) {
+
+				$this->session->set_flashdata('success', 'Video unpublished!');
 
 				redirect('admin/videos/published');
 
@@ -300,7 +338,7 @@ class Videos extends CI_Controller {
 
 			if ($isPublished == true) {
 
-				$this->session->set_flashdata('success', 'Post published!');
+				$this->session->set_flashdata('success', 'Video published!');
 
 				redirect('admin/videos/unpublished');
 

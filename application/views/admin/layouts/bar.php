@@ -13,6 +13,15 @@
             </ul>
 
             <ul class="navbar-nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" target="_blank" href="<?php echo site_url('/'); ?>">
+                        <span class="feather-icon"><i data-feather="external-link"></i></span>
+                        <span class="nav-link-text">View Gallery</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav flex-column">
                 <li class="nav-item <?php echo ($this->uri->segment(2) == 'categorization') ? 'active' : ''; ?>">
                     <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#tables_drp">
                         <span class="feather-icon"><i data-feather="list"></i></span>

@@ -240,7 +240,45 @@ class Photos extends CI_Controller {
 
 			if ($isUnpublished == true) {
 
-				$this->session->set_flashdata('success', 'Post unpublished!');
+				$this->session->set_flashdata('success', 'Photo unpublished!');
+
+				redirect('admin/photos/published');
+
+			} else {
+
+				$this->session->set_flashdata('error', 'Something went wrong, please try again');
+
+				redirect('admin/photos/published');
+
+			}
+
+		} else {
+
+			$this->session->set_flashdata('error', 'Access denied');
+
+			redirect('admin/photos/published');
+
+		}
+
+	 }
+
+	 public function delete($id) {
+
+		$validator = $this->Photos_model->idValidator($id);
+
+		if ($validator == true) {
+
+			$status = [
+
+				'status' => 3
+
+			];
+
+			$isUnpublished = $this->Photos_model->unpublish($id, $status);
+
+			if ($isUnpublished == true) {
+
+				$this->session->set_flashdata('success', 'Photo Deleted!');
 
 				redirect('admin/photos/published');
 
@@ -278,7 +316,7 @@ class Photos extends CI_Controller {
 
 			if ($isPublished == true) {
 
-				$this->session->set_flashdata('success', 'Post published!');
+				$this->session->set_flashdata('success', 'Photo published!');
 
 				redirect('admin/photos/unpublished');
 

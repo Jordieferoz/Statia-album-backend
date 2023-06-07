@@ -61,7 +61,7 @@ class Welcome extends CI_Controller
 			$data['PHOTOS'] = $this->Crud->Read('photos', " `status` = '1' AND `is_image` = 1 AND `category_id` = '$category_id' ORDER BY id DESC LIMIT $page, 12");
 			$data["links"] = $this->pagination->create_links();
 		}
-		$this->load->view('site/layouts/header');
+		$this->load->view('site/layouts/header', $data);
 		$this->load->view('site/index', $data);
 		$this->load->view('site/layouts/footer');
 	}
@@ -98,7 +98,7 @@ class Welcome extends CI_Controller
 			$data['VIDEOS'] = $this->Crud->Read('photos', " `status` = '1' AND `is_image` = 0 AND `category_id` = '$category_id' ORDER BY id DESC LIMIT $page, 12");
 			$data["links"] = $this->pagination->create_links();
 		}
-		$this->load->view('site/layouts/header');
+		$this->load->view('site/layouts/header', $data);
 		$this->load->view('site/videos', $data);
 		$this->load->view('site/layouts/footer');
 	}
@@ -116,7 +116,7 @@ class Welcome extends CI_Controller
 			}
 			$photoData = $this->Crud->Read('photos', " `id` = '$id'");
 			$data['PHOTO'] = $photoData[0];
-			$this->load->view('site/layouts/header');
+			$this->load->view('site/layouts/header', $data);
 			$this->load->view('site/photo', $data);
 			$this->load->view('site/layouts/footer');
 		} else {

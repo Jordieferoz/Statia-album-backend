@@ -21,11 +21,11 @@
   }
 </style>
 <div class="row">
-  <div class="col-md-3 col-sm-12">
+  <div class="col-md-3 col-sm-12 categories-list-block">
     <ul class="categories-list">
       <li>
         <a href="<?= base_url() ?>">
-          <p class="category-single all-photos-list <?= !($this->uri->segment(3)) ? 'active' : '' ?>">All Photos</p>
+          <p class="category-single all-photos-list <?= !($this->uri->segment(3)) ? 'active' : '' ?>">Gallery</p>
         </a>
       </li>
       <?php foreach ($CATEGORIES as $category) { ?>
@@ -40,7 +40,7 @@
     </ul>
   </div>
   <div class="col-md-9 col-sm-12 photos-and-categories">
-    <h3 class="section-title heading5 categories-list-item"><?= !($this->uri->segment(3)) ? 'All Photos' : $CATEGORIES[array_search($this->uri->segment(3), array_column($CATEGORIES, 'id'), 'id')]->category ?></h3>
+    <h3 class="section-title heading5 categories-list-item"><?= !($this->uri->segment(3)) ? 'Gallery' : $CATEGORIES[array_search($this->uri->segment(3), array_column($CATEGORIES, 'id'), 'id')]->category ?></h3>
     <div class="row mt-3 categories-image-list">
     <?php if (!($this->uri->segment(3))) {
       $count = 0;

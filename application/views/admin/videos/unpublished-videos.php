@@ -45,6 +45,9 @@
               <a class="btn btn-success btn-sm" href="<?php echo site_url('admin/videos/publish/'.$videos->id); ?>">
                   Publish
               </a>
+            <a class="btn btn-danger btn-sm" href="<?php echo site_url('admin/videos/delete/'.$videos->id); ?>">
+                  Delete
+              </a>
           </td>
           </tr>
         <?php } ?>

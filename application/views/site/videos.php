@@ -21,11 +21,11 @@
   }
 </style>
 <div class="row">
-  <div class="col-md-3 col-sm-12">
+  <div class="col-md-3 col-sm-12 categories-list-block">
     <ul class="categories-list">
       <li>
         <a href="<?= base_url('/welcome/videos') ?>">
-          <p class="category-single all-photos-list <?= !($this->uri->segment(3)) ? 'active' : '' ?>">All Videos</p>
+          <p class="category-single all-photos-list <?= !($this->uri->segment(3)) ? 'active' : '' ?>">Gallery</p>
         </a>
       </li>
       <?php foreach ($CATEGORIES as $category) { ?>
@@ -40,7 +40,7 @@
     </ul>
   </div>
   <div class="col-md-9 col-sm-12 photos-and-categories">
-    <h3 class="section-title heading5 categories-list-item"><?= !($this->uri->segment(3)) ? 'All Videos' : $CATEGORIES[array_search($this->uri->segment(3), array_column($CATEGORIES, 'id'), 'id')]->category ?></h3>
+    <h3 class="section-title heading5 categories-list-item"><?= !($this->uri->segment(3)) ? 'Gallery' : $CATEGORIES[array_search($this->uri->segment(3), array_column($CATEGORIES, 'id'), 'id')]->category ?></h3>
     <div class="row mt-3 categories-image-list">
       <?php if (!($this->uri->segment(3))) {
         $count = 0;
@@ -113,9 +113,9 @@
 
 <div class="modal fade" id="videoShowModal" tabindex="-1" role="dialog" aria-labelledby="videoShowModal" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered model-xl" style="max-width: 80%;" role="document">
-    <div class="modal-content">
+    <div class="modal-content video-view-modal">
       <div class="modal-body">
-        <center><video id="videoElement" controls style="max-width: 100%;"></video></center>
+        <center><video id="videoElement" controls style="max-width: 100%; border: 1px solid white;"></video></center>
       </div>
     </div>
   </div>
@@ -139,12 +139,12 @@
         console.log(res)
         if (res == "true") {
           let updatedValue = 0
-          let views = $(`#image-${photoId}`).text()
+          let views = $(`#image-${id}`).text()
           if (views === 'No') {
             updatedValue = 1
           } else {
             updatedValue = Number(views) + 1
-            $(`#image-${photoId}`).html(updatedValue)
+            $(`#image-${id}`).html(updatedValue)
           }
         }
         $('#videoShowModal').modal('show');
@@ -212,36 +212,3 @@
 
   });
 </script> -->
-<script>
-  function hasClass(ele, cls) {
-    return !!ele.className.match(new RegExp('(\\s|^)' + cls + '(\\s|$)'));
-  }
-
-  function addClass(ele, cls) {
-    if (!hasClass(ele, cls)) ele.className += " " + cls;
-  }
-
-  function removeClass(ele, cls) {
-    if (hasClass(ele, cls)) {
-      var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)');
-      ele.className = ele.className.replace(reg, ' ');
-    }
-  }
-
-  function init() {
-    document.getElementById("open-sidebar").addEventListener("click", toggleMenu);
-    document.getElementById("sidebar-overlay").addEventListener("click", toggleMenu);
-    document.getElementById("sidebar-close-icon").addEventListener("click", toggleMenu);
-  }
-
-  function toggleMenu() {
-    var ele = document.getElementsByTagName('body')[0];
-
-    if (!hasClass(ele, "sidebar-menu-open")) {
-      addClass(ele, "sidebar-menu-open");
-      s
-    } else {
-      removeClass(ele, "sidebar-menu-open");
-    }
-  }
-</script>

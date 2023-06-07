@@ -35,10 +35,12 @@
 
   function toggleMenu() {
     var ele = document.getElementsByTagName('body')[0];
-
+    let hamburgerImage = document.getElementById('hamburger-image')
     if (!hasClass(ele, "sidebar-menu-open")) {
       addClass(ele, "sidebar-menu-open");
+      hamburgerImage.src = "<?= base_url() ?>assets/site/images/hamburger_icon_active.svg"
     } else {
+      hamburgerImage.src = "<?= base_url() ?>assets/site/images/hamburger_icon.svg"
       removeClass(ele, "sidebar-menu-open");
     }
   }
@@ -47,6 +49,14 @@
       init();
     }
   });
+
+  function updatePage(val) {
+    if (val === 'photos') {
+      window.location.assign('<?= base_url('/welcome/index') ?><?= isset($_GET['c']) ? '/' . $this->uri->segment(3) . '?c=' . $_GET['c'] : '' ?>')
+    } else {
+      window.location.assign('<?= base_url('/welcome/videos') ?><?= isset($_GET['c']) ? '/' . $this->uri->segment(3) . '?c=' . $_GET['c'] : '' ?>')
+    }
+  }
 </script>
 
 <body>
@@ -61,9 +71,18 @@
           <a class="navbar-brand" href="<?= base_url() ?>">
             <img class="logo" alt="logo" src="<?= base_url() ?>assets/site/images/logo.png">
           </a>
-          <a class="hamburger-icon" id="open-sidebar">
-            <img src="<?= base_url() ?>assets/site/images/hamburger_icon.svg" />
-          </a>
+          <select class="page-selector" onchange="updatePage(this.value)">
+            <option value="photos" <?= $this->uri->segment(2) === 'index' ? 'selected' : '' ?>>Photos</option>
+            <option value="videos" <?= $this->uri->segment(2) === 'videos' ? 'selected' : '' ?>>Videos</option>
+          </select>
+          <div class="mob-right-icons">
+            <a class="hamburger-icon" href="<?= base_url('welcome/logout') ?>">
+              <img src="<?= base_url() ?>assets/site/images/logout.svg" />
+            </a>
+            <a class="hamburger-icon" id="open-sidebar">
+              <img id="hamburger-image" src="<?= base_url() ?>assets/site/images/hamburger_icon.svg" />
+            </a>
+          </div>
         </div>
         <div class="menu-wrapper">
           <ul class="main-menu">
@@ -98,19 +117,16 @@
                 <div class="sidebar-header-content">
                   <ul class="sidebar-menu-items">
                     <li>
-                      <a class="heading5 <?php echo $this->uri->segment(2) !== 'videos' ? 'active' : '' ?>" href="<?= base_url('/welcome/index') ?><?= isset($_GET['c']) ? '/' . $this->uri->segment(3) . '?c=' . $_GET['c'] : '' ?>">
-                        Photos
+                      <a href="<?= base_url('/welcome/videos') ?>">
+                        <p class="category-single all-photos-list <?= !($this->uri->segment(3)) ? 'active' : '' ?>" style="font-size: 23pt !important; color: black; padding-bottom: 10px;">Gallery</p>
                       </a>
                     </li>
-                    <li>
-                      <a class="heading5 <?php echo $this->uri->segment(2) === 'videos' ? 'active' : '' ?>" href="<?= base_url('/welcome/videos') ?><?= isset($_GET['c']) ? '/' . $this->uri->segment(3) . '?c=' . $_GET['c'] : '' ?>">
-                        Videos
-                      </a>
-                    </li>
-                    <?php if ($this->session->userdata('user_key')) { ?>
+                    <?php foreach ($CATEGORIES as $category) { ?>
                       <li>
-                        <a class="heading5" href="<?= base_url('welcome/logout') ?>">
-                          Logout
+                        <a href="<?= base_url() . 'welcome/videos/' . $category->id . '?c=' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $category->category)) ?>">
+                          <p class="category-single <?= ($this->uri->segment(3)) && $this->uri->segment(3) === $category->id ? 'active' : '' ?>">
+                            <?= $category->category ?>
+                          </p>
                         </a>
                       </li>
                     <?php } ?>

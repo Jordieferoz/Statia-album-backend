@@ -41,6 +41,7 @@
               <a class="btn btn-success btn-sm" href="<?php echo site_url('admin/photos/publish/'.$photos->id); ?>">
                   Publish
               </a>
+              <a href="<?php echo site_url('admin/photos/delete/' . $photos->id); ?>" class="btn btn-danger btn-sm">Delete</a>
           </td>
           </tr>
         <?php } ?>
