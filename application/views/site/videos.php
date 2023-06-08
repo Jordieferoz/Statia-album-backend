@@ -42,10 +42,10 @@
   <div class="col-md-9 col-sm-12 photos-and-categories">
     <h3 class="section-title heading5 categories-list-item">
       <div class="row">
-        <div class="col-6 mt-1">
+        <div class="col-10 col-md-12 mt-1">
           <?= !($this->uri->segment(3)) ? 'Gallery' : $CATEGORIES[array_search($this->uri->segment(3), array_column($CATEGORIES, 'id'), 'id')]->category ?>
         </div>
-        <div class="col-6">
+        <div class="col-2 col-md-none">
           <div class="category-menu">
             <a id="open-sidebar">
               <img id="hamburger-image" src="<?= base_url() ?>assets/site/images/hamburger_icon.svg" />
@@ -135,15 +135,15 @@
 </div> -->
 
 <div class="modal fade" id="videoShowModal" tabindex="-1" role="dialog" aria-labelledby="videoShowModal" aria-hidden="true">
-    <div class="vertical-alignment-helper">
-        <div class="modal-dialog vertical-align-center">
-            <div class="modal-content video-view-modal" style="min-width: 80vw !important;">
-                <div class="modal-body">
-                  <center><video id="videoElement" controls style="width: 100%; border: 1px solid white;"></video></center>
-                </div>
-            </div>
+  <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center">
+      <div class="modal-content video-view-modal" style="min-width: 80vw !important;">
+        <div class="modal-body">
+          <center><video id="videoElement" controls style="width: 100%; border: 1px solid white;"></video></center>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <script>
   function viewPage(id) {
@@ -184,7 +184,7 @@
       }
     });
   }
-  $('#videoShowModal').on('hidden.bs.modal', function (e) {
+  $('#videoShowModal').on('hidden.bs.modal', function(e) {
     document.getElementById('videoModal').src = '';
     document.getElementById('videoModal').type = '';
     // var source = document.createElement('source');

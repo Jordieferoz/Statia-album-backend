@@ -967,6 +967,7 @@ input[type="color"]:focus,
   margin-top: 1px;
   font-size: 18px;
   border: none;
+  background-color: white;
 }
 
 @media only screen and (max-width: 280px) {

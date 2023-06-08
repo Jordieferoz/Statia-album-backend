@@ -42,10 +42,10 @@
   <div class="col-md-9 col-sm-12 photos-and-categories">
     <h3 class="section-title heading5 categories-list-item">
       <div class="row">
-        <div class="col-6 mt-1">
+        <div class="col-10 col-md-12 mt-1">
           <?= !($this->uri->segment(3)) ? 'Gallery' : $CATEGORIES[array_search($this->uri->segment(3), array_column($CATEGORIES, 'id'), 'id')]->category ?>
         </div>
-        <div class="col-6">
+        <div class="col-2 col-md-none">
           <div class="category-menu">
             <a id="open-sidebar">
               <img id="hamburger-image" src="<?= base_url() ?>assets/site/images/hamburger_icon.svg" />
