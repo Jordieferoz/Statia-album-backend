@@ -71,20 +71,17 @@
           <a class="navbar-brand" href="<?= base_url() ?>">
             <img class="logo" alt="logo" src="<?= base_url() ?>assets/site/images/logo.png">
           </a>
-          <?php if ($this->session->userdata('user_key')) { ?>
-            <select class="page-selector mt-1" onchange="updatePage(this.value)">
-              <option value="photos" <?= $this->uri->segment(2) === 'index' ? 'selected' : '' ?>>Photos</option>
-              <option value="videos" <?= $this->uri->segment(2) === 'videos' ? 'selected' : '' ?>>Videos</option>
-            </select>
-            <div class="mob-right-icons">
-              <a class="mob-icons" href="#">
-                <img onclick="window.location.assign('<?= base_url('welcome/logout') ?>')" src="<?= base_url() ?>assets/site/images/logout.svg" />
-              </a>
-              <a class="mob-icons" id="open-sidebar">
-                <img id="hamburger-image" src="<?= base_url() ?>assets/site/images/hamburger_icon.svg" />
+          <!-- <?php if ($this->session->userdata('user_key')) { ?>
+            <div class="mob-right-icons" style="float: right;">
+              <select class="page-selector mt-1" onchange="updatePage(this.value)">
+                <option value="photos" <?= $this->uri->segment(2) === 'index' ? 'selected' : '' ?>>Photos</option>
+                <option value="videos" <?= $this->uri->segment(2) === 'videos' ? 'selected' : '' ?>>Videos</option>
+              </select>
+              <a class="mob-icons" href="<?= base_url('welcome/logout') ?>">
+                <img src="<?= base_url() ?>assets/site/images/logout.svg" />
               </a>
             </div>
-          <?php } ?>
+          <?php } ?> -->
         </div>
         <div class="menu-wrapper">
           <ul class="main-menu">
@@ -102,6 +99,23 @@
               <li>
                 <a class="heading5" href="<?= base_url('welcome/logout') ?>">
                   Logout
+                </a>
+              </li>
+            <?php } ?>
+          </ul>
+        </div>
+        <div class="menu-wrapper-mob">
+          <ul class="main-menu">
+            <?php if ($this->session->userdata('user_key')) { ?>
+              <li>
+                <select class="page-selector mt-1" onchange="updatePage(this.value)">
+                  <option value="photos" <?= $this->uri->segment(2) === 'index' ? 'selected' : '' ?>>Photos</option>
+                  <option value="videos" <?= $this->uri->segment(2) === 'videos' ? 'selected' : '' ?>>Videos</option>
+                </select>
+              </li>
+              <li>
+                <a class="mob-icons mt-1" href="<?= base_url('welcome/logout') ?>">
+                  <img class="h-100" src="<?= base_url() ?>assets/site/images/logout.svg" />
                 </a>
               </li>
             <?php } ?>

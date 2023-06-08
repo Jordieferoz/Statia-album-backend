@@ -181,6 +181,13 @@ img {
   right: 10vw;
 }
 
+.menu-wrapper-mob {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+}
+
 .header-top-fixed .main-menu {
   padding: 0 20px;
   display: -ms-flexbox;
@@ -301,10 +308,10 @@ body.sidebar-menu-open .sidebar-menu {
 }
 
 .mob-icons {
-  height: 60px;
-  width: 60px;
-  padding-left: 35px;
-  padding-top: 15px;
+  /* height: 100px; */
+  /* width: 120px; */
+  /* padding-left: 35px; */
+  padding-top: 18px;
   display: none;
 }
 
@@ -312,6 +319,10 @@ body.sidebar-menu-open .sidebar-menu {
   .header-top-fixed .menu-wrapper {
     display: none;
     /* width: 50%; */
+  }
+
+  .menu-wrapper-mob {
+    display: flex;
   }
 
   .mob-right-icons {
@@ -977,6 +988,10 @@ input[type="color"]:focus,
   }
 }
 
+.category-menu {
+  display: none;
+}
+
 @media only screen and (max-width: 767px) {
   .login_part {
     width: 100%;
@@ -994,7 +1009,13 @@ input[type="color"]:focus,
     display: block !important;
     border-top: 1px solid grey;
     border-bottom: 1px solid grey;
-    padding: 15px 0 10px 0;
+    padding: 18px 0 0 0;
+    text-align: left;
+  }
+  .category-menu {
+    display: flex;
+    align-items: center;
+    justify-content: end;
   }
   .section-title::after {
     content: "";
@@ -1075,9 +1096,14 @@ input[type="color"]:focus,
 .mob-right-icons {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: end;
   /* height: 100px; */
-  width: 150px;
+  /* width: 100px; */
+  margin-right: 40px !important;
+}
+
+.mob-right-icons select {
+  margin-right: 30px !important;
 }
 
 body.sidebar-menu-open {

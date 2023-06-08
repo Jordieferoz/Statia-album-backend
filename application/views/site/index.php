@@ -40,7 +40,20 @@
     </ul>
   </div>
   <div class="col-md-9 col-sm-12 photos-and-categories">
-    <h3 class="section-title heading5 categories-list-item"><?= !($this->uri->segment(3)) ? 'Gallery' : $CATEGORIES[array_search($this->uri->segment(3), array_column($CATEGORIES, 'id'), 'id')]->category ?></h3>
+    <h3 class="section-title heading5 categories-list-item">
+      <div class="row">
+        <div class="col-6 mt-1">
+          <?= !($this->uri->segment(3)) ? 'Gallery' : $CATEGORIES[array_search($this->uri->segment(3), array_column($CATEGORIES, 'id'), 'id')]->category ?>
+        </div>
+        <div class="col-6">
+          <div class="category-menu">
+            <a id="open-sidebar">
+              <img id="hamburger-image" src="<?= base_url() ?>assets/site/images/hamburger_icon.svg" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </h3>
     <div class="row mt-3 categories-image-list">
     <?php if (!($this->uri->segment(3))) {
       $count = 0;

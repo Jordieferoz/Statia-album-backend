@@ -129,7 +129,7 @@ class Photos extends CI_Controller {
 
 			$config['upload_path'] = FCPATH.'uploads/photos/';
 
-			$config['allowed_types'] = '*';//'gif|jpg|png|jpeg|heic';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
 
 			// $config['max_size'] = 2000;
 
@@ -354,7 +354,7 @@ class Photos extends CI_Controller {
 
 				$config['upload_path'] = FCPATH.'uploads/photos/';
 
-				$config['allowed_types'] = '*';//'gif|jpg|png|jpeg|heic';
+				$config['allowed_types'] = 'gif|jpg|png|jpeg';
 
 				// $config['max_size'] = 2000;
 
@@ -593,7 +593,7 @@ class Photos extends CI_Controller {
 		$config = array();
 		$config['upload_path'] = FCPATH.'uploads/photos/';
 
-		$config['allowed_types'] = '*';//'gif|jpg|png|jpeg|heic';
+		$config['allowed_types'] = 'gif|jpg|png|jpeg';
 
 		// $config['max_size'] = 2000;
 

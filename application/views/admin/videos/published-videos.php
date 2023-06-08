@@ -35,7 +35,7 @@
                   View
                 </button>
             </td>
-            <td><button type="button" class="btn btn-default imageShow" data-image = "<?php echo $imagePath; ?>" data-toggle="modal" data-target="#view-image">Load Video</button></td>
+            <td><button type="button" class="btn btn-default imageShow" data-image = "<?php echo $imagePath; ?>" data-type = "<?php echo $videos->file_type; ?>" data-toggle="modal" data-target="#view-image">Load Video</button></td>
             <td><?= $thumbnailPath ? '<a href="'.$thumbnailPath.'" target="_blank"><img src = "'.$thumbnailPath.'" alt = "Thumbnail" height = "50" width = "50"></a>' : 'No thumbnail' ?></td>
             <td><?php echo $videos->added_date . ' / ' . $videos->added_time; ?></td>
             <td class="project-actions text-right">
@@ -82,8 +82,7 @@
         </div>
         <div class="modal-body">
           <a href="" id = "modalImageLink" target = "_BLANK">
-            <video width="750" controls>
-              <source src="mov_bbb.mp4" id = "modalImage" type="video/mp4">
+            <video width="750" controls id="videoElement">
               Your browser does not support HTML video.
             </video>
           </a>
@@ -106,10 +105,15 @@
       });
 
       $('.imageShow').on('click', function(e) {
-
         var image = $(this).data('image');
+        var type = $(this).data('type');
 
-        $('#modalImage').attr('src', image);
+        var video = document.getElementById('videoElement');
+        var source = document.createElement('source');
+        source.setAttribute('src', image);
+        source.setAttribute('type', type);
+        video.appendChild(source);
+        video.play();
 
         $('#modalImageLink').attr('href', image);
 

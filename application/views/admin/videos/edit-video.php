@@ -39,7 +39,7 @@ foreach ($POST_DETAILS as $post) {
     <span style="color: red;" class="text-error"><?php echo isset($error['error']) ? $error['error'] : ''; ?></span>
   </div>
   <div class="form-group">
-    <label for="inputClientCompany">Video (mp4 | wmv | mpeg | mov | mpg)</label>
+    <label for="inputClientCompany">Video (mp4 | webm | ogg)</label>
     <input type="file" name="coverVideo" accept = "videos/*" class = "form-control" id="coverVideo">
     <span style = "color: red;" class = "text-error"><?php echo isset($error['error']) ? $error['error'] : ''; ?></span>
   </div>

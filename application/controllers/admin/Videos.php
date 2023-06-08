@@ -129,7 +129,7 @@ class Videos extends CI_Controller {
 
 			$config['upload_path'] = FCPATH.'uploads/videos/';
 
-			$config['allowed_types'] = '*';//'mp4|wmv|mpeg|mov|mpg|heic';
+			$config['allowed_types'] = 'mp4|webm|ogg';
 
 			// $config['max_size'] = 20480;
 
@@ -153,7 +153,7 @@ class Videos extends CI_Controller {
 
 				$config['upload_path'] = FCPATH.'uploads/thumbnails/';
 
-				$config['allowed_types'] = '*';//'gif|jpg|png|jpeg|heic';
+				$config['allowed_types'] = 'gif|jpg|png|jpeg';
 
 				// $config['max_size'] = 2000;
 
@@ -382,7 +382,7 @@ class Videos extends CI_Controller {
 
 				$config['upload_path'] = FCPATH.'uploads/thumbnails/';
 
-				$config['allowed_types'] = '*';//'gif|jpg|png|jpeg|heic';
+				$config['allowed_types'] = 'gif|jpg|png|jpeg';
 
 				// $config['max_size'] = 2000;
 
@@ -405,7 +405,7 @@ class Videos extends CI_Controller {
 
 				$config['upload_path'] = FCPATH.'uploads/videos/';
 
-				$config['allowed_types'] = '*';//'mp4|wmv|mpeg|mov|mpg|heic';
+				$config['allowed_types'] = 'mp4|webm|ogg';
 
 				// $config['max_size'] = 20480;
 
