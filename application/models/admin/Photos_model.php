@@ -27,7 +27,7 @@ class Photos_model extends CI_Model {
             ->where('status', 1)
             ->where('is_image', $isImage ? 1 : 0)
             ->join('categories', 'photos.category_id = categories.id')
-            ->order_by('photos.added_date', 'asc')
+            ->order_by('photos.added_timestamp', 'asc')
             ->get();
         return $data->result();
 

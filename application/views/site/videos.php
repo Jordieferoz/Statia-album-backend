@@ -161,14 +161,25 @@
         }
         $('#videoShowModal').modal('show');
         var video = document.getElementById('videoElement');
+        video.innerHTML = ''
         var source = document.createElement('source');
         source.setAttribute('src', link);
         source.setAttribute('type', ext);
+        source.setAttribute('id', 'videoModal');
         video.appendChild(source);
+        video.load();
         video.play();
       }
     });
   }
+  $('#videoShowModal').on('hidden.bs.modal', function (e) {
+    document.getElementById('videoModal').src = '';
+    document.getElementById('videoModal').type = '';
+    // var source = document.createElement('source');
+    // source.setAttribute('src', link);
+    // source.setAttribute('type', ext);
+    // video.appendChild(source);
+  });
 </script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js" crossorigin="anonymous"></script>
 <script>
