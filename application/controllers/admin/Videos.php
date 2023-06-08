@@ -374,9 +374,9 @@ class Videos extends CI_Controller {
 
 			$videoData = $this->Photos_model->getSingleRecord($id);
 
-			echo json_encode($videoData);
+			// echo json_encode($videoData);
 
-			$thumbnail_metadata = ['file_name' => $videoData->thumbnail_path];
+			$thumbnail_metadata = ['file_name' => $videoData[0]->thumbnail_path];
 
 			if (isset($_FILES['thumbnailImage']) && is_uploaded_file($_FILES['thumbnailImage']['tmp_name'])) {
 
