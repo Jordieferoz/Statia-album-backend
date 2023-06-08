@@ -65,24 +65,26 @@
   </div>
   <div style="min-height:100vh; display:flex; flex-direction:column; 
             justify-content:space-between;">
-    <header class="header-top-fixed one-page-nav">
+    <header class="header-top-fixed one-page-nav pb-2">
       <div class="container m-0 mx-5">
         <div class="logo">
           <a class="navbar-brand" href="<?= base_url() ?>">
             <img class="logo" alt="logo" src="<?= base_url() ?>assets/site/images/logo.png">
           </a>
-          <select class="page-selector" onchange="updatePage(this.value)">
-            <option value="photos" <?= $this->uri->segment(2) === 'index' ? 'selected' : '' ?>>Photos</option>
-            <option value="videos" <?= $this->uri->segment(2) === 'videos' ? 'selected' : '' ?>>Videos</option>
-          </select>
-          <div class="mob-right-icons">
-            <a class="hamburger-icon" href="<?= base_url('welcome/logout') ?>">
-              <img src="<?= base_url() ?>assets/site/images/logout.svg" />
-            </a>
-            <a class="hamburger-icon" id="open-sidebar">
-              <img id="hamburger-image" src="<?= base_url() ?>assets/site/images/hamburger_icon.svg" />
-            </a>
-          </div>
+          <?php if ($this->session->userdata('user_key')) { ?>
+            <select class="page-selector mt-1" onchange="updatePage(this.value)">
+              <option value="photos" <?= $this->uri->segment(2) === 'index' ? 'selected' : '' ?>>Photos</option>
+              <option value="videos" <?= $this->uri->segment(2) === 'videos' ? 'selected' : '' ?>>Videos</option>
+            </select>
+            <div class="mob-right-icons">
+              <a class="mob-icons" href="#">
+                <img onclick="window.location.assign('<?= base_url('welcome/logout') ?>')" src="<?= base_url() ?>assets/site/images/logout.svg" />
+              </a>
+              <a class="mob-icons" id="open-sidebar">
+                <img id="hamburger-image" src="<?= base_url() ?>assets/site/images/hamburger_icon.svg" />
+              </a>
+            </div>
+          <?php } ?>
         </div>
         <div class="menu-wrapper">
           <ul class="main-menu">
@@ -121,15 +123,17 @@
                         <p class="category-single all-photos-list <?= !($this->uri->segment(3)) ? 'active' : '' ?>" style="font-size: 23pt !important; color: black; padding-bottom: 10px;">Gallery</p>
                       </a>
                     </li>
-                    <?php foreach ($CATEGORIES as $category) { ?>
-                      <li>
-                        <a href="<?= base_url() . 'welcome/videos/' . $category->id . '?c=' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $category->category)) ?>">
-                          <p class="category-single <?= ($this->uri->segment(3)) && $this->uri->segment(3) === $category->id ? 'active' : '' ?>">
-                            <?= $category->category ?>
-                          </p>
-                        </a>
-                      </li>
-                    <?php } ?>
+                    <?php if (isset($CATEGORIES)) { ?>
+                      <?php foreach ($CATEGORIES as $category) { ?>
+                        <li>
+                          <a href="<?= base_url() . 'welcome/videos/' . $category->id . '?c=' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $category->category)) ?>">
+                            <p class="category-single <?= ($this->uri->segment(3)) && $this->uri->segment(3) === $category->id ? 'active' : '' ?>">
+                              <?= $category->category ?>
+                            </p>
+                          </a>
+                        </li>
+                    <?php }
+                    } ?>
                   </ul>
                 </div>
               </div>

@@ -11,7 +11,7 @@
                     <form class="register-form" action="<?php echo site_url('account/authenticate'); ?>" method="post" role="form">
                         <p class="hello_head mb-3">Hello!</p>
                         <p class="text-center hello_head_sm mb-2">Please enter your credentials</p>
-                        <p class="text-center hello_head_md mb-3">Don't have an account? <a href="<?php echo site_url('account/register'); ?>" class="link-warning underline">Register here</a></p>
+                        <p class="text-center hello_head_md mb-3">Don't have an account? <br /> <a href="<?php echo site_url('account/register'); ?>" class="link-warning underline">Register here</a></p>
                         <div class="form-outline mb-3">
                             <input type="email" placeholder="Enter email" class="form-control unicase-form-control p-3" id="email" name="email" value="<?php echo ($this->uri->segment(3)) ? $this->uri->segment(3) : set_value('email'); ?>">
                             <span class="text-danger"><?php echo form_error('email'); ?></span>

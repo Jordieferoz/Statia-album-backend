@@ -112,7 +112,7 @@
 </div>
 
 <div class="modal fade" id="videoShowModal" tabindex="-1" role="dialog" aria-labelledby="videoShowModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered model-xl" style="max-width: 80%;" role="document">
+  <div class="modal-dialog modal-dialog-centered model-xl" role="document">
     <div class="modal-content video-view-modal">
       <div class="modal-body">
         <center><video id="videoElement" controls style="max-width: 100%; border: 1px solid white;"></video></center>
@@ -129,7 +129,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
 <script>
   function playVideo(link, id, ext) {
-    debugger
     $.ajax({
       async: true,
       crossDomain: true,

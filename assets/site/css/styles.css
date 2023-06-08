@@ -300,10 +300,22 @@ body.sidebar-menu-open .sidebar-menu {
   display: none;
 }
 
+.mob-icons {
+  height: 60px;
+  width: 60px;
+  padding-left: 35px;
+  padding-top: 15px;
+  display: none;
+}
+
 @media only screen and (max-width: 767px) {
   .header-top-fixed .menu-wrapper {
     display: none;
     /* width: 50%; */
+  }
+
+  .mob-right-icons {
+    display: none;
   }
 
   main {
@@ -323,6 +335,9 @@ body.sidebar-menu-open .sidebar-menu {
   }
 
   .hamburger-icon {
+    display: block;
+  }
+  .mob-icons {
     display: block;
   }
   .welcome-section .welcome-desc {
@@ -1060,7 +1075,11 @@ input[type="color"]:focus,
 .mob-right-icons {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  height: 100px;
-  width: 100px;
+  justify-content: start;
+  /* height: 100px; */
+  width: 150px;
+}
+
+body.sidebar-menu-open {
+  overflow: hidden;
 }
