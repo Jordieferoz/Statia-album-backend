@@ -113,9 +113,12 @@
                   <option value="videos" <?= $this->uri->segment(2) === 'videos' ? 'selected' : '' ?>>Videos</option>
                 </select>
               </li>
-              <li>
-                <a class="mob-icons mt-1" href="<?= base_url('welcome/logout') ?>">
+              <li class="d-flex align-items-center">
+                <!-- <a class="mob-icons mt-1" href="<?= base_url('welcome/logout') ?>">
                   <img class="h-100" src="<?= base_url() ?>assets/site/images/logout.svg" />
+                </a> -->
+                <a class="heading5 mt-1" href="<?= base_url('welcome/logout') ?>">
+                  Logout
                 </a>
               </li>
             <?php } ?>

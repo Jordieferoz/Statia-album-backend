@@ -124,14 +124,26 @@
   </div>
 </div>
 
-<div class="modal fade" id="videoShowModal" tabindex="-1" role="dialog" aria-labelledby="videoShowModal" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered model-xl" role="document">
-    <div class="modal-content video-view-modal">
+<!-- <div class="modal fade" id="videoShowModal" tabindex="-1" role="dialog" aria-labelledby="videoShowModal" aria-hidden="true">
+  <div class="modal-dialog vertical-align-center" role="document">
+    <div class="modal-content video-view-modal" style="min-width: 80vw !important;">
       <div class="modal-body">
-        <center><video id="videoElement" controls style="max-width: 100%; border: 1px solid white;"></video></center>
+        <center><video id="videoElement" controls style="border: 1px solid white;"></video></center>
       </div>
     </div>
   </div>
+</div> -->
+
+<div class="modal fade" id="videoShowModal" tabindex="-1" role="dialog" aria-labelledby="videoShowModal" aria-hidden="true">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog vertical-align-center">
+            <div class="modal-content video-view-modal" style="min-width: 80vw !important;">
+                <div class="modal-body">
+                  <center><video id="videoElement" controls style="width: 100%; border: 1px solid white;"></video></center>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script>
   function viewPage(id) {

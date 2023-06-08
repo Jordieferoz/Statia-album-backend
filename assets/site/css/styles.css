@@ -182,7 +182,7 @@ img {
 }
 
 .menu-wrapper-mob {
-  display: flex;
+  display: none;
   align-items: center;
   position: absolute;
   right: 0;
@@ -965,6 +965,20 @@ input[type="color"]:focus,
   display: none !important;
   padding: 4px;
   margin-top: 1px;
+  font-size: 18px;
+  border: none;
+}
+
+@media only screen and (max-width: 280px) {
+  .heading5 {
+    font-size: 8pt;
+  }
+  .logo img {
+    width: 90px !important;
+  }
+  .page-selector {
+    font-size: 8pt;
+  }
 }
 
 @media only screen and (max-width: 990px) {
@@ -1091,6 +1105,28 @@ input[type="color"]:focus,
 .video-view-modal {
   border: none;
   background-color: transparent !important;
+}
+
+.vertical-alignment-helper {
+  display:table;
+  height: 100%;
+  width: 100%;
+  pointer-events:none;
+}
+.vertical-align-center {
+  /* To center vertically */
+  display: table-cell;
+  vertical-align: middle;
+  pointer-events:none;
+}
+.modal-content {
+  /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+  width:inherit;
+  max-width:inherit; /* For Bootstrap 4 - to avoid the modal window stretching full width */
+  height:inherit;
+  /* To center horizontally */
+  margin: 0 auto;
+  pointer-events:all;
 }
 
 .mob-right-icons {
