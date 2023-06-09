@@ -184,13 +184,21 @@
       }
     });
   }
+
+  var v = document.getElementById("videoElement");
+  v.addEventListener("loadedmetadata", function(e) {
+    if ((this.videoHeight > this.videoWidth + 100) && window.matchMedia('screen and (max-width: 768px)').matches === false) {
+      v.style.width = '30%'
+    } else {
+      v.style.width = '100%'
+    }
+  }, false);
+
   $('#videoShowModal').on('hidden.bs.modal', function(e) {
-    document.getElementById('videoModal').src = '';
-    document.getElementById('videoModal').type = '';
-    // var source = document.createElement('source');
-    // source.setAttribute('src', link);
-    // source.setAttribute('type', ext);
-    // video.appendChild(source);
+    $('video').trigger('pause');
+    let video = document.getElementById('videoModal')
+    video.src = '';
+    video.type = '';
   });
 </script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js" crossorigin="anonymous"></script>
