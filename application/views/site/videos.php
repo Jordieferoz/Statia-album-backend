@@ -137,7 +137,12 @@
 <div class="modal fade" id="videoShowModal" tabindex="-1" role="dialog" aria-labelledby="videoShowModal" aria-hidden="true">
   <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center">
-      <div class="modal-content video-view-modal" style="min-width: 80vw !important;">
+      <div class="modal-content video-view-modal" style="min-width: 70vw !important;">
+        <div class="modal-header d-flex justify-content-end" style="border: none !important;">
+          <button type="button" class="close no-border-button" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+            <img src="<?= base_url() ?>assets/site/images/CloseIcon.svg"class="img-fluid float-right rounded" alt="closeIcon">
+          </button>
+        </div>
         <div class="modal-body">
           <center><video id="videoElement" controls style="width: 100%; border: 1px solid white;"></video></center>
         </div>
@@ -183,6 +188,10 @@
         video.play();
       }
     });
+  }
+
+  const closeModal = () => {
+    $('#videoShowModal').modal('hide')
   }
 
   var v = document.getElementById("videoElement");

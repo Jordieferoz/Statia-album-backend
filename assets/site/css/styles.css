@@ -982,6 +982,13 @@ input[type="color"]:focus,
   }
 }
 
+.no-border-button {
+  padding: 0 !important;
+  border: none !important;
+  background: none !important;
+  border: none !important;
+}
+
 @media only screen and (max-width: 990px) {
   .login_part{ 
     height: calc(100vh - 73px);
