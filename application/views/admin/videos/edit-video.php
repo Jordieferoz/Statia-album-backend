@@ -9,6 +9,7 @@ foreach ($POST_DETAILS as $post) {
     $description = $post->description;
     $category = $post->category_id;
     $videoPath = $post->file_name;
+    $thumbnailPath = $post->thumbnail_path;
 }
 ?>
 
@@ -28,7 +29,7 @@ foreach ($POST_DETAILS as $post) {
     <select class="form-control custom-select" name = "category" required>
       <option disabled>Select category</option>
       <?php foreach ($CATEGORIES as $categoryAll) { ?>
-          <option value="<?php echo $categoryAll->id; ?>" <?php echo ($category == $categoryAll->category) ? 'selected' : ''; ?>><?php echo $categoryAll->category; ?></option>
+          <option value="<?php echo $categoryAll->id; ?>" <?php echo ($category == $categoryAll->id) ? 'selected' : ''; ?>><?php echo $categoryAll->category; ?></option>
       <?php } ?>
     </select>
     <span style = "color: red;" class = "text-error"><?php echo form_error('category'); ?></span>
@@ -37,11 +38,13 @@ foreach ($POST_DETAILS as $post) {
     <label for="inputClientCompany">Thumbnail (gif | jpg | png | jpeg)</label>
     <input type="file" name="thumbnailImage" accept="images/*" class="form-control" id="thumbnailImage">
     <span style="color: red;" class="text-error"><?php echo isset($error['error']) ? $error['error'] : ''; ?></span>
+    <p class="mt-2">Existing thumbnail: <a target="_blank" href="<?= base_url('uploads/thumbnails/') . $thumbnailPath ?>"><?= $thumbnailPath ?></a></p>
   </div>
   <div class="form-group">
     <label for="inputClientCompany">Video (mp4)</label>
     <input type="file" name="coverVideo" accept = "videos/*" class = "form-control" id="coverVideo">
     <span style = "color: red;" class = "text-error"><?php echo isset($error['error']) ? $error['error'] : ''; ?></span>
+    <p class="mt-2">Existing video: <a target="_blank" href="<?= base_url('uploads/videos/') . $videoPath ?>"><?= $videoPath ?></a></p>
   </div>
 </div>
 
