@@ -97,7 +97,7 @@
               <?php } ?>
             </div>
             <div class="media-content">
-              <h4 class="heading2 decrease-line-height"><?= $photo->title ? $photo->title : 'No title' ?></h4>
+              <h4 class="heading2 decrease-line-height" title="<?= $photo->title ?>"><?= $photo->title ? (strlen($photo->title) > 20 ? mb_substr(strip_tags($photo->title), 0, 20) . '...' : strip_tags($photo->title)) : 'No title' ?></h4>
               <h5 class="sub-heading" title="<?= strip_tags($photo->description) ?>"><?= strlen($photo->description) > 20 ? mb_substr(strip_tags($photo->description), 0, 20) . '...' : strip_tags($photo->description); ?></h5>
               <p class="supported-text media-views"><span id="image-<?= $photo->id ?>"><?= $photo->total_views == 0 ? 'No' : $photo->total_views ?></span> views</p>
             </div>

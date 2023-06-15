@@ -136,14 +136,14 @@
                 <div class="sidebar-header-content">
                   <ul class="sidebar-menu-items">
                     <li>
-                      <a href="<?= base_url('/welcome/videos') ?>">
+                      <a href="<?= base_url('/welcome') . ($this->uri->segment(2) === 'videos' ? '/videos' : '/index') ?>">
                         <p class="category-single all-photos-list <?= !($this->uri->segment(3)) ? 'active' : '' ?>" style="font-size: 23pt !important; color: black; padding-bottom: 10px;">Gallery</p>
                       </a>
                     </li>
                     <?php if (isset($CATEGORIES)) { ?>
                       <?php foreach ($CATEGORIES as $category) { ?>
                         <li>
-                          <a href="<?= base_url() . 'welcome/videos/' . $category->id . '?c=' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $category->category)) ?>">
+                          <a href="<?= base_url() . 'welcome/' . ($this->uri->segment(2) === 'videos' ? 'videos/' : 'index/') . $category->id . '?c=' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $category->category)) ?>">
                             <p class="category-single <?= ($this->uri->segment(3)) && $this->uri->segment(3) === $category->id ? 'active' : '' ?>">
                               <?= $category->category ?>
                             </p>

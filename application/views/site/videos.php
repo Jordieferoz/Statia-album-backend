@@ -97,7 +97,7 @@
                 <?php } ?>
               </div>
               <div class="media-content">
-                <h4 class="heading2 decrease-line-height"><?= $video->title ? $video->title : 'No title' ?></h4>
+              <h4 class="heading2 decrease-line-height" title="<?= $video->title ?>"><?= $video->title ? (strlen($video->title) > 20 ? mb_substr(strip_tags($video->title), 0, 20) . '...' : strip_tags($video->title)) : 'No title' ?></h4>
                 <h5 class="sub-heading" title="<?= strip_tags($video->description) ?>"><?= strlen($video->description) > 20 ? mb_substr(strip_tags($video->description), 0, 20) . '...' : strip_tags($video->description); ?></h5>
                 <p class="supported-text media-views"><span id="image-<?= $video->id ?>"><?= $video->total_views == 0 ? 'No' : $video->total_views ?></span> views</p>
               </div>
