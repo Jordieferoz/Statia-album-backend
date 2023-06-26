@@ -1,16 +1,16 @@
 <?php
 
-function sendsms($email, $vars)
+function sendsms($email, $message)
 {
-    // $from = 'info@cubicdash.com';//'statiagallery@gmail.com';
+    // $from = 'info@statiamultimedialibrary.com';//'statiagallery@gmail.com';
     // $ci = &get_instance();
 
     // $ci->load->library('email');
     // $config = array();
     // $config['protocol']     = "smtp";
-    // $config['smtp_host']    = "smtp.hostinger.com";
+    // $config['smtp_host']    = "mail.statiamultimedialibrary.com";
     // $config['smtp_user']    = $from;
-    // $config['smtp_pass']    = "Info@CD4";//"Stati@dmin";
+    // $config['smtp_pass']    = "V;c7n}+hZY3@";//"Stati@dmin";
     // $config['smtp_port']    =  465;
     // $config['smtp_crypto']  = 'ssl';
     // $config['smtp_timeout'] = "";
@@ -32,4 +32,31 @@ function sendsms($email, $vars)
     // } else {
     //     echo ($ci->email->print_debugger());
     // }
+
+    $from = 'info@statiamultimedialibrary.com';//'statiagallery@gmail.com';
+    $ci = &get_instance();
+    $ci->load->library("email");
+    $configEmail = array(
+        'useragent' => "CodeIgniter",
+        'mailpath'  => "/usr/bin/sendmail", // or "/usr/sbin/sendmail"
+        'protocol'  => 'smtp',
+        'smtp_host' => 'mail.statiamultimedialibrary.com',// URL check: http://www.yetesoft.com/free-email-marketing-resources/godaddy-pop-smtp-server-settings/,
+        'smtp_port' => 465, // Usually 465
+        'smtp_crypto' => 'ssl', // or tls
+        'smtp_user' => 'info@statiamultimedialibrary.com',
+        'smtp_pass' => 'V;c7n}+hZY3@',
+        'mailtype'  => 'html',
+        'charset'   => 'utf-8',
+        'newline'   => "\r\n"
+    );
+    //Load config
+    $ci->email->initialize($configEmail);
+    $ci->email->from($from);
+    $ci->email->to($email);
+    $ci->email->subject('Mail from Statia Pictures');
+    $ci->email->message($message);
+    $ci->email->send();
+
+    // See result
+    echo $ci->email->print_debugger();
 }

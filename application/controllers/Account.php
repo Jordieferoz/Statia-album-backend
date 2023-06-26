@@ -196,7 +196,9 @@ class Account extends CI_Controller
 					'var1' => $otp
 				);
 
-				sendsms($this->input->post('phone'), $vars);
+				$message = "Hello,\nPlease use this OTP for your account. \n\n OTP: " . $vars['var1'];
+
+				sendsms($this->input->post('phone'), $message);
 
 				$this->session->set_flashdata('success', 'Registration success!.'); // Please check register mail for OTP
 
@@ -351,7 +353,9 @@ class Account extends CI_Controller
 						'var1' => $thisOTP
 					);
 
-					sendsms($userDetails[0]->phone, $vars);
+					$message = "Hello,\nPlease use this OTP for your account. \n\n OTP: " . $vars['var1'];
+
+					sendsms($userDetails[0]->phone, $message);
 
 					$this->Crud->Update('users', $otpData, " `verification_key` = '$verification'");
 
@@ -415,7 +419,9 @@ class Account extends CI_Controller
 				'var1' => $thisOTP,
 			);
 
-			sendsms($this->input->post('email'), $vars);
+			$message = "Hello,\nPlease use this OTP for your account. \n\n OTP: " . $vars['var1'];
+
+			sendsms($this->input->post('email'), $message);
 
 			$update = $this->Crud->Update('users', $data, " `email` = '$email'");
 
