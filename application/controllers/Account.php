@@ -253,8 +253,8 @@ class Account extends CI_Controller
 
 				$this->session->set_flashdata('success', 'Please enter OTP sent to your email!'); // Please check register mail for OTP
 
-				// redirect('account/verification/' . $verificationKey);
 				echo "<script>alert('Please check your registered email for verification code!'); window.location.assign('" . base_url('account/verification/' . $verificationKey) . "')</script>";
+				// redirect('account/verification/' . $verificationKey);
 				// redirect('account/login/');
 			}
 		} else {
@@ -378,8 +378,7 @@ class Account extends CI_Controller
 
 					$message = "Hello,
 					\nYour details has been sent for verification, please wait for sometime until we get your account verified.
-					\n\n Please note this user id to login to your account after getting verified.
-					\n\n User ID: " . $reader[0]->uid;
+					\n\n Please note this user id to login to your account after getting verified.";
 
 					$this->session->set_flashdata('success', "Your email has been verified and your account has been send for approval request. You will receive an email once we verify your account."); // Please check register mail for OTP
 
@@ -402,7 +401,8 @@ class Account extends CI_Controller
 					";
 					sendsms('info@statiamultimedialibrary.com', $adminMessage);
 					
-					redirect('account/register/');
+					// redirect('account/register/');
+					echo "<script>alert('Your account has been sent for verification!'); window.location.assign('" . base_url('account/login/') . "')</script>";
 				} else {
 
 					$this->session->set_flashdata('danger', 'Incorrect OTP!');
