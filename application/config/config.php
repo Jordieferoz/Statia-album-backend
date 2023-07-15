@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 define('PROJECT_NAME', 'Statia Tourism Gallery');
-define('EXPIRATION_DELAY', 30000);
+define('EXPIRATION_DELAY', 259200);
 
 define('APP_URL', ($_SERVER['SERVER_PORT'] == 443 ? 'https' : 'http') . "://{$_SERVER['SERVER_NAME']}".str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME'])); 
 

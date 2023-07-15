@@ -22,12 +22,59 @@ class Account extends CI_Controller
 			redirect('/');
 		}
 
+		// if (!$this->uri->segment(3)) {
+		// 	// redirect('/account/register');
+		// 	$this->session->set_flashdata('warning', "Account doesn't exists!");
+		// }
+
 		$this->load->view('site/layouts/header');
 		$this->load->view('site/account/login');
 		$this->load->view('site/layouts/footer', [ 'HIDE_CONTENT' => true ]);
 	}
 
-	public function authenticate()
+	public function authenticate() {
+		$this->form_validation->set_rules('uid', 'User ID', 'required');
+
+		if ($this->form_validation->run()) {
+			$uid = $this->input->post('uid');
+			$isValidUID = $this->Crud->Count('users', " `uid` = '$uid'");
+			if ($isValidUID == 0) {
+				$this->session->set_flashdata('danger', "User ID not registered");
+				redirect('account/login');
+			} else {
+				$isActive = $this->Crud->Count('users', " `uid` = '$uid' AND `is_active` = '1' AND `is_verified` = '1'");
+				if ($isActive == 0) {
+					$this->session->set_flashdata('danger', "User ID is not verified either not active.");
+					redirect('account/login');
+				} else {
+					$userData = $this->Crud->Read('users', " `uid` = '$uid'")[0];
+					if ($userData->is_first_login == 0) {
+						$this->Crud->Update('users', array('is_first_login' => 1, 'first_login_time' => date('y-m-d H:i:s')) ," `uid` = '$uid'");
+					} else {
+						if ((strtotime($userData->first_login_time) + EXPIRATION_DELAY) < time()) {
+							$this->session->set_flashdata('danger', "Your User ID has been expired, please register again to access our gallery.");
+							redirect('account/login');
+							return false;
+						}
+					}
+					$userData = $this->Crud->Read('users', " `uid` = '$uid'")[0];
+					$this->session->set_userdata('user_key', $userData->verification_key);
+
+					$this->session->set_userdata('user_role', 'USER');
+
+					$this->session->set_userdata('user_name', $userData->name);
+
+					$this->session->set_userdata('user_id', $userData->uid);
+
+					$this->session->set_userdata('user_email', $userData->email);
+					$this->session->set_userdata('expiry_timestamp', strtotime($userData->first_login_time) + EXPIRATION_DELAY);
+					redirect('/');
+				}
+			}
+		}
+	}
+
+	public function authenticateOld()
 	{
 
 		$this->form_validation->set_rules('email', 'Email', 'required|trim');
@@ -157,9 +204,10 @@ class Account extends CI_Controller
 	{
 
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
-		$this->form_validation->set_rules('phone', 'Phone', 'trim');
-		$this->form_validation->set_rules('password', 'Password', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'trim|required|is_unique[users.email]');
+		// $this->form_validation->set_rules('phone', 'Phone', 'trim');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required');
+		$this->form_validation->set_rules('business_or_organization', 'Business/Organization', 'trim');
+		$this->form_validation->set_rules('address', 'Address', 'trim|required');
 
 		if ($this->form_validation->run()) {
 
@@ -167,16 +215,17 @@ class Account extends CI_Controller
 
 			$otp = rand(100000, 999999);
 
-			$encryptedPassword = $this->encryption->encrypt($this->input->post('password'));
+			$uid = rand(10000000, 99999999);
 
 			$data = [
 
 				'name' => $this->input->post('name'),
+				'uid' => $uid,
 
-				'phone' => $this->input->post('phone'),
+				// 'phone' => $this->input->post('phone'),
 				'email' => $this->input->post('email'),
-
-				'password' => $encryptedPassword,
+				'business_or_organization' => $this->input->post('business_or_organization'),
+				'address' => $this->input->post('address'),
 
 				'otp' => $otp,
 
@@ -196,19 +245,72 @@ class Account extends CI_Controller
 					'var1' => $otp
 				);
 
-				$message = "Hello,\nPlease use this OTP for your account. \n\n OTP: " . $vars['var1'];
+				$message = "Hello,\nPlease use this OTP to verify your account. \n\n OTP: " . $vars['var1'] ."
+					\n\n Or, click this link to verify your account <a href=".base_url('account/verificationmail/' . $verificationKey).">" . base_url('account/verificationmail/' . $verificationKey) . "</a>
+				";
 
-				sendsms($this->input->post('phone'), $message);
+				sendsms($this->input->post('email'), $message);
 
-				$this->session->set_flashdata('success', 'Registration success!.'); // Please check register mail for OTP
+				$this->session->set_flashdata('success', 'Please enter OTP sent to your email!'); // Please check register mail for OTP
 
 				// redirect('account/verification/' . $verificationKey);
-				echo "<script>alert('Registration successful, please login with your credentials to access the images.'); window.location.assign('" . base_url('account/login/') . "')</script>";
+				echo "<script>alert('Please check your registered email for verification code!'); window.location.assign('" . base_url('account/verification/' . $verificationKey) . "')</script>";
 				// redirect('account/login/');
 			}
 		} else {
 
 			$this->register();
+		}
+	}
+
+	public function verificationmail() {
+		if ($this->uri->segment(3)) {
+
+			$verification = $this->uri->segment(3);
+
+			$codeExists = $this->Crud->Count('users', " `verification_key` = '$verification'");
+
+			if ($codeExists < 1) {
+
+			} else {
+
+				$isVerified = $this->Crud->Count('users', " `verification_key` = '$verification' AND `is_verified` = '1'");
+
+				if ($isVerified > 0) {
+
+					echo "Account already verified.";
+				} else {
+					$isVerified = $this->Crud->Update('users', array('is_verified' => 1) ," `verification_key` = '$verification'");
+					$reader = $this->Crud->Read('users', " `verification_key` = '$verification'");
+
+					$message = "Hello,
+					\nYour details has been sent for verification, please wait for sometime until we get your account verified.
+					\n\n You will receive a User ID post verification, which you can use to login to your account.";
+
+					sendsms($reader[0]->email, $message);
+					$adminMessage = "
+						Hi,\n
+						\nA new account has registered to statia-multimedia gallary.\n
+						\nDetails:\n
+						\nName: " . $reader[0]->name . "\n
+						\nBusiness/Organization: " . $reader[0]->business_or_organization . "\n
+						\nAddress: " . $reader[0]->address . "\n
+						\nEmail: " . $reader[0]->email . "\n
+						\nRegistered on: " . $reader[0]->register_timestamp . "\n
+						\nUser ID: " . $reader[0]->uid . "\n
+						\nAccount Status: Verified.\n\n
+						\nPlease share the user id with the user by replying on their email. They can access statia multi media gallery with their User ID 
+ 						\nhours from their first login.\n\n
+						\nLogin Link: " . base_url('/account/login') . " 
+					";
+					sendsms('info@statiamultimedialibrary.com', $adminMessage);
+					
+					echo "Your email has been verified and your account has been send for approval request. You will receive an email once we verify your account.";
+				}
+			}
+		} else {
+
+			echo "Unable to verify";
 		}
 	}
 
@@ -274,27 +376,33 @@ class Account extends CI_Controller
 
 					$reader = $this->Crud->Read('users', " `verification_key` = '$verification' AND `otp` = '$otp'");
 
-					foreach ($reader as $key) {
+					$message = "Hello,
+					\nYour details has been sent for verification, please wait for sometime until we get your account verified.
+					\n\n Please note this user id to login to your account after getting verified.
+					\n\n User ID: " . $reader[0]->uid;
 
-						$verification = $key->verification_key;
+					$this->session->set_flashdata('success', "Your email has been verified and your account has been send for approval request. You will receive an email once we verify your account."); // Please check register mail for OTP
 
-						$name = $key->name;
+					sendsms($reader[0]->email, $message);
 
-						$id = $key->id;
-					}
-
-					$this->session->set_userdata('user_key', $verification);
-
-					$this->session->set_userdata('user_role', 'USER');
-
-					$this->session->set_userdata('user_name', $name);
-
-					$this->session->set_userdata('user_email', $reader[0]->email);
-
-					$this->session->set_userdata('user_id', $id);
-					$this->session->set_userdata('expiry_timestamp', time() + EXPIRATION_DELAY);
-
-					redirect('/');
+					$adminMessage = "
+						\nHi,".PHP_EOL."
+						\nA new account has registered to statia-multimedia gallary.".PHP_EOL."
+						\nDetails:".PHP_EOL."
+						\nName: " . $reader[0]->name . "".PHP_EOL."
+						\nBusiness/Organization: " . $reader[0]->business_or_organization . "".PHP_EOL."
+						\nAddress: " . $reader[0]->address . "".PHP_EOL."
+						\nEmail: " . $reader[0]->email . "".PHP_EOL."
+						\nRegistered on: " . $reader[0]->register_timestamp . "".PHP_EOL."
+						\nUser ID: " . $reader[0]->uid . "".PHP_EOL."
+						\nAccount Status: Verified.".PHP_EOL."".PHP_EOL."
+						\nPlease share the user id with the user by replying on their email. They can access statia multi media gallery with their User ID 
+ 						\nhours from their first login.".PHP_EOL."".PHP_EOL."
+						\nLogin Link: " . base_url('/account/login') . " 
+					";
+					sendsms('info@statiamultimedialibrary.com', $adminMessage);
+					
+					redirect('account/register/');
 				} else {
 
 					$this->session->set_flashdata('danger', 'Incorrect OTP!');

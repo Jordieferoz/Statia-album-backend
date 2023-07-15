@@ -13,7 +13,7 @@ class Welcome extends CI_Controller
 
 			// $this->session->set_flashdata('warning', "Please login to continue.");
 
-			redirect('/account/login');
+			redirect('/account/register');
 		} else if ($this->session->userdata('expiry_timestamp') < time()) {
 			$data = $this->session->all_userdata();
 
@@ -235,6 +235,6 @@ class Welcome extends CI_Controller
 			$this->session->unset_userdata($key);
 		}
 
-		redirect('account/login');
+		redirect('account/register');
 	}
 }
