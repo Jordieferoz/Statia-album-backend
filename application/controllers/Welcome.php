@@ -235,6 +235,6 @@ class Welcome extends CI_Controller
 			$this->session->unset_userdata($key);
 		}
 
-		redirect('account/register');
+		redirect('account/login');
 	}
 }
