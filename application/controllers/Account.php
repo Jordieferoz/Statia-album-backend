@@ -32,6 +32,19 @@ class Account extends CI_Controller
 		$this->load->view('site/layouts/footer', ['HIDE_CONTENT' => true]);
 	}
 
+	public function thankyou()
+	{
+
+		if ($this->session->userdata('user_key')) {
+
+			redirect('/');
+		}
+
+		$this->load->view('site/layouts/header');
+		$this->load->view('site/account/thankyou');
+		$this->load->view('site/layouts/footer', ['HIDE_CONTENT' => true]);
+	}
+
 	public function authenticate()
 	{
 		$this->form_validation->set_rules('uid', 'User ID', 'required');
@@ -221,7 +234,7 @@ class Account extends CI_Controller
 		$this->form_validation->set_rules('name', 'Name', 'required|trim');
 		// $this->form_validation->set_rules('phone', 'Phone', 'trim');
 		$this->form_validation->set_rules('email', 'Email', 'trim|required');
-		$this->form_validation->set_rules('business_or_organization', 'Business/Organization', 'trim');
+		$this->form_validation->set_rules('business_or_organization', 'Business/Organization', 'trim|required');
 		$this->form_validation->set_rules('address', 'Address', 'trim|required');
 
 		if ($this->form_validation->run()) {
@@ -260,8 +273,8 @@ class Account extends CI_Controller
 					'var1' => $otp
 				);
 
-				$message = "Hello,\nPlease use this OTP to verify your account. \n\n OTP: " . $vars['var1'] . "
-					\n\n Or, click this link to verify your account <a href=" . base_url('account/verificationmail/' . $verificationKey) . ">" . base_url('account/verificationmail/' . $verificationKey) . "</a>
+				$message = "Hello,\r\nPlease use this OTP to verify your account. \r\n\r\n OTP: " . $vars['var1'] . "
+					\r\n\r\n Or, click this link to verify your account <a href=" . base_url('account/verificationmail/' . $verificationKey) . ">" . base_url('account/verificationmail/' . $verificationKey) . "</a>
 				";
 
 				sendsms($this->input->post('email'), $message);
@@ -298,24 +311,23 @@ class Account extends CI_Controller
 					$isVerified = $this->Crud->Update('users', array('is_verified' => 1), " `verification_key` = '$verification'");
 					$reader = $this->Crud->Read('users', " `verification_key` = '$verification'");
 
-					$message = "Hello,
-					\nYour details has been sent for verification, please wait for sometime until we get your account verified.
-					\n\n You will receive a User ID (valid upto 3 days from the first login) post verification, which you can use to login to your account.";
+					$message = "Thank you. Your details have been received. \n\n
+
+					Login access to the Statia Multimedia Library will be sent to you within 1 business day and will be valid for up to 3 days from the first login.";
 
 					sendsms($reader[0]->email, $message);
 					$adminMessage = "
-						Hi,\n
-						\nA new account has registered to statia-multimedia gallary.\n
+						Hello Statia Tourism,\n
+						\nA new account has registered to the Statia Multimedia Gallery.\n
 						\nDetails:\n
 						\nName: " . $reader[0]->name . "\n
 						\nBusiness/Organization: " . $reader[0]->business_or_organization . "\n
 						\nAddress: " . $reader[0]->address . "\n
 						\nEmail: " . $reader[0]->email . "\n
 						\nRegistered on: " . $reader[0]->register_timestamp . "\n
-						\nUser ID: " . $reader[0]->uid . "\n
 						\nAccount Status: Verified.\n\n
-						\nPlease share the user id with the user by replying on their email. They can access statia multi media gallery with their User ID 
- 						\n(valid upto 3 days from their first login).\n\n
+						\nPlease email to them the User ID (valid up to 3 days from the first login) and login link.
+						\nUser ID: " . $reader[0]->uid . "\n
 						\nLogin Link: " . base_url('/account/login') . " 
 					";
 					sendsms('info@statiamultimedialibrary.com', $adminMessage);
@@ -391,33 +403,32 @@ class Account extends CI_Controller
 
 					$reader = $this->Crud->Read('users', " `verification_key` = '$verification' AND `otp` = '$otp'");
 
-					$message = "Hello,
-					\nYour details has been sent for verification, please wait for sometime until we get your account verified.
-					\n\n You will receive an email with the User ID (valid upto 3 days from the first login) to access to our gallery.";
+					$message = "Thank you. Your details have been received. \n\n
+
+					Login access to the Statia Multimedia Library will be sent to you within 1 business day and will be valid for up to 3 days from the first login.";
 
 					$this->session->set_flashdata('success', "Your email has been verified and your account has been send for approval request. You will receive an email once we verify your account."); // Please check register mail for OTP
 
 					sendsms($reader[0]->email, $message);
 
 					$adminMessage = "
-						\nHi," . PHP_EOL . "
-						\nA new account has registered to statia-multimedia gallary." . PHP_EOL . "
-						\nDetails:" . PHP_EOL . "
-						\nName: " . $reader[0]->name . "" . PHP_EOL . "
-						\nBusiness/Organization: " . $reader[0]->business_or_organization . "" . PHP_EOL . "
-						\nAddress: " . $reader[0]->address . "" . PHP_EOL . "
-						\nEmail: " . $reader[0]->email . "" . PHP_EOL . "
-						\nRegistered on: " . $reader[0]->register_timestamp . "" . PHP_EOL . "
-						\nUser ID: " . $reader[0]->uid . "" . PHP_EOL . "
-						\nAccount Status: Verified." . PHP_EOL . "" . PHP_EOL . "
-						\nPlease share the user id (valid upto 3 days from the first login) with the user by replying on their email. They can access statia multi media gallery with their User ID 
- 						\nhours from their first login." . PHP_EOL . "" . PHP_EOL . "
+						Hello Statia Tourism,\n
+						\nA new account has registered to the Statia Multimedia Gallery\n
+						\nDetails:\n
+						\nName: " . $reader[0]->name . "\n
+						\nBusiness/Organization: " . $reader[0]->business_or_organization . "\n
+						\nAddress: " . $reader[0]->address . "\n
+						\nEmail: " . $reader[0]->email . "\n
+						\nRegistered on: " . $reader[0]->register_timestamp . "\n
+						\nAccount Status: Verified.\n\n
+						\nPlease email to them the User ID (valid up to 3 days from the first login) and login link.
+						\nUser ID: " . $reader[0]->uid . "\n
 						\nLogin Link: " . base_url('/account/login') . " 
 					";
 					sendsms('info@statiamultimedialibrary.com', $adminMessage);
 
 					// redirect('account/register/');
-					echo "<script>alert('Your account has been sent for verification!'); window.location.assign('" . base_url('account/register/') . "')</script>";
+					echo "<script>alert('Your Account has been sent to Statia Tourism for Verification'); window.location.assign('" . base_url('account/thankyou/') . "')</script>";
 				} else {
 
 					$this->session->set_flashdata('danger', 'Incorrect OTP!');

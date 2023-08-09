@@ -4,7 +4,7 @@
     <?php if (!isset($HIDE_CONTENT)) { ?>
       <footer style="margin-top: auto;">
         <div class="container">
-          <p class="paragraph2 border-top footer-paragraph">© <?= date("Y") ?> Statia-tourism. All Rights
+          <p class="paragraph2 border-top footer-paragraph">© <?= date("Y") ?> Statia Tourism. All Rights
             Reserved.</p>
         </div>
       </footer>

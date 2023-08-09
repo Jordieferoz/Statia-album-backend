@@ -9,10 +9,10 @@
                 <div class="row  d-flex justify-content-center" >
                 <div class="form_box shadow-lg p-4">
                     <form class="register-form" action="<?php echo site_url('account/verify/' . $this->uri->segment(3)); ?>" method="post" role="form">
-                        <p class="hello_head mb-3">Verification</p>
-                        <p class="text-center hello_head_sm mb-2">We have sent an OTP (One Time Password) to your email.</p>
+                        <p class="hello_head mb-4" style="font-size: 25pt;">Verify your Email</p>
+                        <p class="text-center hello_head_sm mb-2">Check your email for the OTP(One time passsword)</p>
                         <div class="form-group">
-                            <label class="info-title" for="otp">OTP *</label>
+                            <!-- <label class="info-title" for="otp">OTP *</label> -->
                             <input type="text" pattern="[0-9]{6}" maxlength="6" required placeholder="Enter your OTP here" class="form-control unicase-form-control text-input p-3" id="otp" name="otp">
                         </div>
                         <div class="pt-1 mb-4">

@@ -3,7 +3,7 @@
         <div class="row fill">
             <div class="col-lg-6 col-sm-12 d-none d-lg-flex d-flex justify-content-start login-left-image ">
                 <img src="<?= base_url('/assets/site/images/hero-title.svg') ?>" draggable="false" alt="img" class="h-50 mt-5" />
-                <p class="footer_text text-muted p-5"> &copy; 2023 Statia-tourism. All Rights Reserved.</p>
+                <p class="footer_text text-muted p-5"> &copy; 2023 Statia Tourism. All Rights Reserved.</p>
             </div>
             <div class="col-lg-6 col-sm-12 login_part ">
                 <div class="row  d-flex justify-content-center" >
@@ -29,7 +29,7 @@
                             <span class="text-danger"><?php echo form_error('phone'); ?></span>
                         </div> -->
                         <div class="form-outline mt-3">
-                            <input type="text" class="form-control unicase-form-control p-3 text-input" id="business_or_organization" name="business_or_organization" placeholder="Business/Organization (optional)">
+                            <input type="text" required class="form-control unicase-form-control p-3 text-input" id="business_or_organization" name="business_or_organization" placeholder="Business/Organization (optional)">
                             <span class="text-danger"><?php echo form_error('business_or_organization'); ?></span>
                         </div>
                         <div class="form-outline mt-3">

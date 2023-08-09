@@ -743,7 +743,7 @@ body.sidebar-menu-open .sidebar-menu {
 
   .footer-paragraph {
     text-align: center !important;
-    font-size: 12px;
+    font-size: 9px !important;
   }
 
   .categories-list {
@@ -915,6 +915,7 @@ input[type="color"]:focus,
 .footer_text{
     position: absolute;
     bottom: 0px;
+    font-size: 10pt;
 }
 
 .full-width-div {
