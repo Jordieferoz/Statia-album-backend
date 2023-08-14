@@ -843,8 +843,10 @@ body.sidebar-menu-open .sidebar-menu {
 }
 .login_part{ 
   /* height: 75vh; */
-  background-image: url(../images/bg.jpeg);
-  background-size: contain;
+  background-image: url(../images/bg-3.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   display: block;
   /* width: 50%; */
 }
@@ -857,9 +859,10 @@ body.sidebar-menu-open .sidebar-menu {
   height: 85%;
   margin-top: 30px;
   background: rgb(211,215,215);
-  background: linear-gradient(0deg, rgb(78 78 78 / 71%) 0%, rgba(255,253,253,1) 100%);
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background: white;
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
+/* linear-gradient(0deg, rgb(78 78 78 / 71%) 0%, rgba(255,253,253,1) 100%); */
 
 textarea, input {
   opacity: 0.6;
@@ -881,7 +884,7 @@ input[type="tel"]:focus,
 input[type="color"]:focus,
 .uneditable-input:focus {
   opacity: 1;
-  border-color: transparent;
+  border-color: grey;
   box-shadow: 0 1px 1px transparent inset, 0 0 8px transparent;
   outline: 0 none;
 }
@@ -915,7 +918,7 @@ input[type="color"]:focus,
 .footer_text{
     position: absolute;
     bottom: 0px;
-    font-size: 10pt;
+    font-size: 8pt;
 }
 
 .full-width-div {
@@ -938,7 +941,6 @@ input[type="color"]:focus,
 }
 
 .msg {
-  color: white;
   padding: 10px 0px;
 }
 

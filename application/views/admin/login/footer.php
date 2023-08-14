@@ -5,7 +5,7 @@
                     <div class="row">
                         <div class="col-md-12 col-sm-12">
                             <center>
-                                <p style="color: white;">Powered by Statia-tourism | All Rights Reserved.</p>
+                                <p style="color: white;"> &copy; 2023 Statia Tourism. All Rights Reserved.</p>
                             </center>
                         </div>
                     </div>

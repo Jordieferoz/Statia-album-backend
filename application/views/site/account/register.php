@@ -29,7 +29,7 @@
                             <span class="text-danger"><?php echo form_error('phone'); ?></span>
                         </div> -->
                         <div class="form-outline mt-3">
-                            <input type="text" required class="form-control unicase-form-control p-3 text-input" id="business_or_organization" name="business_or_organization" placeholder="Business/Organization (optional)">
+                            <input type="text" required class="form-control unicase-form-control p-3 text-input" id="business_or_organization" name="business_or_organization" placeholder="Business/Organization">
                             <span class="text-danger"><?php echo form_error('business_or_organization'); ?></span>
                         </div>
                         <div class="form-outline mt-3">

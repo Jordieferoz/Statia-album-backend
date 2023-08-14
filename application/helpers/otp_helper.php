@@ -53,7 +53,7 @@ function sendsms($email, $message)
     $ci->email->initialize($configEmail);
     $ci->email->from($from);
     $ci->email->to($email);
-    $ci->email->subject('Mail from Statia Pictures');
+    $ci->email->subject('Statia Multimedia Library');
     $ci->email->message($message);
     $ci->email->send();
 

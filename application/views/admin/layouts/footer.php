@@ -6,7 +6,7 @@
                 <footer class="footer">
                     <div class="row">
                         <div class="col-md-12 col-sm-12 d-flex justify-content-end">
-                            <p>Powered by Statia-tourism | All Rights Reserved.</p>
+                            <p> &copy; 2023 Statia Tourism. All Rights Reserved.</p>
                         </div>
                     </div>
                 </footer>
